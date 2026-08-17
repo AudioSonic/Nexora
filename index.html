@@ -4,41 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <title>Nexora</title>
 </head>
 <body>
     <aside class="sidebar">
         <img src="assets/logos/Nexora_Logo.png">
-        <span>MEINE SKILLS</span>
-        <nav>
-            <li class="skill-card-list">
-                <div class="skill-card">
-                    <div class="skill-card-upper">
-                        <div class="logo-title">
-                            <img class="skill-logo"src="assets/logos/js_logo.png">
-                            <span>JavaScript</span>
+        <div class="skills">
+            <span>MEINE SKILLS</span>
+            <nav>
+                <li class="skill-card-list">
+                    <button class="skill-card">
+                        <div class="skill-card-upper">
+                            <div class="logo-title">
+                                <img class="skill-logo"src="assets/logos/js_logo.png">
+                                <span>JavaScript</span>
+                            </div>
+                            <span class="skill-percentage">100%</span>
                         </div>
-                        <span class="skill-percentage">100%</span>
-                    </div>
-                    
-                    <progress class="skill-card-progress-bar" value="62" max="100"></progress>
+                        
+                        <progress class="skill-card-progress-bar" value="62" max="100"></progress>
+                    </button>
+
+                    <button class="skill-card">
+                        <div class="skill-card-upper">
+                            <div class="logo-title">
+                                <img class="skill-logo"src="assets/logos/csharp_logo.png">
+                                <span>C#</span>
+                            </div>
+                            <span class="skill-percentage">100%</span>
+                        </div>
+                        
+                        <progress class="skill-card-progress-bar" value="62" max="100"></progress>
+                    </button>
+                </li>
+                <button class="btn btn-add-skill" id="btn-add-skill">+ Neuen Skill hinzufügen</button>
+            </nav>
+        </div>
+        
+
+        <div class="total-progress">
+            <span>Gesamtfortschritt</span>
+
+            <div class="total-percentage">
+                <div class="progress-circle" style="--progress: 62%;">
+                    <span>62%</span>
                 </div>
 
-                <div class="skill-card">
-                    <div class="skill-card-upper">
-                        <div class="logo-title">
-                            <img class="skill-logo"src="assets/logos/csharp_logo.png">
-                            <span>C#</span>
-                        </div>
-                        <span class="skill-percentage">100%</span>
-                    </div>
-                    
-                    <progress class="skill-card-progress-bar" value="62" max="100"></progress>
-                </div>
-            </li>
-        </nav>
+                <span class="total-progress-text">
+                    15 von 24 Themen<br>abgeschlossen
+                </span>
+            </div>
+        </div>
+        <div class="sidebar-settings">
+            <hr>
+            <button class="btn btn-settings">
+                <img src="assets/icons/icon_settings.svg">
+                <span>Einstellungen</span>
+            </button>
+        </div>
+        
+        
     </aside>
+
     <main class="main-content">
 
     </main>
