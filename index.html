@@ -11,68 +11,50 @@
     <title>Nexora</title>
 </head>
 <body>
-    <aside class="sidebar">
-        <img src="assets/logos/Nexora_Logo.png">
-        <div class="skills">
-            <span>MEINE SKILLS</span>
-            <nav>
-                <li class="skill-card-list">
-                    <button class="skill-card">
-                        <div class="skill-card-upper">
-                            <div class="logo-title">
-                                <img class="skill-logo"src="assets/logos/js_logo.png">
-                                <span>JavaScript</span>
-                            </div>
-                            <span class="skill-percentage">100%</span>
-                        </div>
-                        
-                        <progress class="skill-card-progress-bar" value="62" max="100"></progress>
-                    </button>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="skills">
+                <img src="assets/logos/Nexora_Logo.png" alt="Nexora" id="nexora-logo">
+                <span>MEINE SKILLS</span>
+                <nav>
 
-                    <button class="skill-card">
-                        <div class="skill-card-upper">
-                            <div class="logo-title">
-                                <img class="skill-logo"src="assets/logos/csharp_logo.png">
-                                <span>C#</span>
-                            </div>
-                            <span class="skill-percentage">100%</span>
-                        </div>
-                        
-                        <progress class="skill-card-progress-bar" value="62" max="100"></progress>
-                    </button>
-                </li>
-                <button class="btn btn-add-skill" id="btn-add-skill">+ Neuen Skill hinzufügen</button>
-            </nav>
-        </div>
-        
+                    <div class="skill-list" id="skill-list"></div>
 
-        <div class="total-progress">
-            <span>Gesamtfortschritt</span>
-
-            <div class="total-percentage">
-                <div class="progress-circle" style="--progress: 62%;">
-                    <span>62%</span>
-                </div>
-
-                <span class="total-progress-text">
-                    15 von 24 Themen<br>abgeschlossen
-                </span>
+                    <button class="btn btn-add-skill" id="btn-add-skill">+ Neuen Skill hinzufügen</button>
+                </nav>
             </div>
-        </div>
-        <div class="sidebar-settings">
-            <hr>
-            <button class="btn btn-settings">
-                <img src="assets/icons/icon_settings.svg">
-                <span>Einstellungen</span>
-            </button>
-        </div>
-        
-        
-    </aside>
+            
 
-    <main class="main-content">
+            <div class="total-progress">
+                <span>Gesamtfortschritt</span>
 
-    </main>
+                <div class="total-percentage">
+                    <div class="progress-circle" style="--progress: 62%;">
+                        <span>62%</span>
+                    </div>
+
+                    <span class="total-progress-text">
+                        15 von 24 Themen<br>abgeschlossen
+                    </span>
+                </div>
+            </div>
+            <div class="sidebar-settings">
+                <hr>
+                <button class="btn btn-settings">
+                    <img src="assets/icons/icon_settings.svg">
+                    <span>Einstellungen</span>
+                </button>
+            </div>
+            
+            
+        </aside>
+
+        <main class="main-content" id="main-content">
+
+        </main>
+    </div>
+
+    <script src="js/data.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>
