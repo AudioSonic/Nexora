@@ -1,0 +1,117 @@
+.general-overview {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--color-cards);
+    justify-content: space-between;
+    align-items: center;
+    min-height: 188px;
+    margin: 24px 0 28px;
+    padding: 22px 0;
+    border-radius: var(--border-radius-default);
+    border-color: var(--border-color);
+    border-style: solid;
+    border-width: 1px;
+ }
+
+ .general-overview > div:not(:last-child) {
+    border-right: 1px solid var(--border-color);
+}
+
+.general-overview-section {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 142px;
+ }
+
+.phase-overview {
+
+ }
+
+.project-phase {
+
+ }
+
+.phase-content {
+
+ }
+
+.phase-content-header {
+
+ }
+
+.phase-title {
+
+ }
+
+.phase-description {
+
+ }
+
+.phase-progress { 
+
+}
+
+.skill-progress-bar {
+
+ }
+
+.phase-progress-info {
+
+ }
+
+.phase-sections {
+
+ }
+
+.theme-button {
+
+ }
+
+.theme-title {
+    
+ }
+
+ .overview-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+    max-width: 150px;
+ }
+
+  .overview-icon{
+    height: 64px;
+    width: 64px;
+    display: block;
+    object-fit: contain;
+    background-color: var(--color-accent);
+    padding: 15px;
+    border-radius: 999px;
+    margin-bottom: 15px;
+ }
+
+ .general-overview-section:nth-child(-n + 3) .overview-icon {
+    transform: translateY(4px);
+ }
+
+ .overview-amount {
+    color: var(--color-text-secondary);
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.1;
+    min-height: 31px;
+    margin-bottom: 5px;
+ }
+
+ .overview-description {
+    max-width: 190px;
+    color: var(--color-text-secondary);
+    font-size: 15px;
+    line-height: 1.35;
+    align-self: center;
+ }

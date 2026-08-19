@@ -1,0 +1,43 @@
+.main-content h1{
+    font-size: 25px;
+}
+
+.main-content h2{
+
+}
+
+.main-content h3{
+
+}
+
+.skill-page-logo {
+    width: 35px;
+    height: 35px;
+ }
+
+.skill-page-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+ }
+
+.skill-page-title {
+    font-size: 30px;
+ }
+
+.skill-page-description {
+
+ }
+
+.skill-page-footer {
+
+ }
+
+.skill-page-footer-icon {
+
+ }
+ 
+.skill-page-footer-text {
+
+ }

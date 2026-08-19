@@ -1,0 +1,17 @@
+*{ 
+    font-family: "Inter", sans-serif; 
+    font-size: 13px; 
+}
+
+.app { 
+    display: flex; 
+    min-height: 100vh; 
+}
+
+.main-content{ 
+    flex: 1; min-width: 0; 
+    min-height: 100vh; 
+    background-color: var(--color-main-content); 
+    color: var(--color-text-secondary); 
+    padding: 20px;
+}

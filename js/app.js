@@ -61,10 +61,13 @@ function loadSkillPage(skill){
 function renderSkillPage(skill){
 
     const skillPage = document.createElement("article");
+    skillPage.classList.add("skill-page");
 
     // Header
     const header = document.createElement("header");
+    header.classList.add("skill-page-header");
     const titleAndDesc = document.createElement("div");
+    titleAndDesc.classList.add("skill-page-title-group");
     const logo = document.createElement("img");
     
     if (skill.logo) {
@@ -80,10 +83,12 @@ function renderSkillPage(skill){
 
     logo.classList.add("skill-page-logo");
 
-    const title = document.createElement("span");
+    const title = document.createElement("h1");
+    title.classList.add("skill-page-title");
     title.textContent = skill.name;
 
     const description = document.createElement("p");
+    description.classList.add("skill-page-description");
     description.textContent = skill.desc;
     
     titleAndDesc.append(title, description);
@@ -95,23 +100,25 @@ function renderSkillPage(skill){
 
     const overviewFinalProjects = document.createElement("div");
     overviewFinalProjects.classList.add("general-overview-section");
-    const finalProjectsContent = createOverviewSection("../assets/icons/icon_final_project.svg", 1, null, 1, "Abschlussprojekte abgeschlossen");
+    const finalProjectsContent = createOverviewSection("../assets/icons/icon_final_project.svg", 1, null, 1, "Abschlussprojekte");
     overviewFinalProjects.append(finalProjectsContent);
 
     const overviewCompletedThemes = document.createElement("div");
     overviewCompletedThemes.classList.add("general-overview-section");
-    const completedThemesContent = createOverviewSection("../assets/icons/icon_completed_themes.svg", 10, 10, 0, "Themen abgeschlossen");
+    const completedThemesContent = createOverviewSection("../assets/icons/icon_completed_themes.svg", 10, 10, 0, "Themen");
     overviewCompletedThemes.append(completedThemesContent);
 
     const overviewCompletedPhases = document.createElement("div");
     overviewCompletedPhases.classList.add("general-overview-section");
-    const completedPhases = createOverviewSection("../assets/icons/icon_completed_phases.svg", 4, 4, 0, "Phasen abgeschlossen");
+    const completedPhases = createOverviewSection("../assets/icons/icon_completed_phases.svg", 4, 4, 0, "Phasen");
     overviewCompletedPhases.append(completedPhases);
 
     const overviewCompletePercentage = document.createElement("div");
     overviewCompletePercentage.classList.add("general-overview-section");
     const completedPercentageContent = createOverviewSection("../assets/icons/icon_completed_percentage.svg", 100, null, 2, "Fortschritt");
     overviewCompletePercentage.append(completedPercentageContent);
+
+    const hr = document.createElement("hr");
 
     generalOverview.append(overviewFinalProjects, overviewCompletedThemes, overviewCompletedPhases, overviewCompletePercentage);
 
@@ -137,9 +144,12 @@ function renderSkillPage(skill){
     })
 
    const footer = document.createElement("footer");
+   footer.classList.add("skill-page-footer");
    const footerIcon = document.createElement("img");
+   footerIcon.classList.add("skill-page-footer-icon");
    footerIcon.src="../assets/icons/icon_leaf.svg";
    const motivationText = document.createElement("span");
+   motivationText.classList.add("skill-page-footer-text");
    motivationText.textContent = "Dranbleiben zahlt sich aus. Jeder Schritt bringt dich weiter!";
 
     footer.append(footerIcon, motivationText);
@@ -151,6 +161,7 @@ function renderSkillPage(skill){
 
 function renderFinalProjectButton(phase){
  const finalProjectButton = document.createElement("button");
+    finalProjectButton.classList.add("final-project-button");
     const finalProjectButtonLockIcon = document.createElement("img");
     finalProjectButtonLockIcon.src = "../assets/icons/icon_lock.svg";
 
@@ -167,26 +178,31 @@ function renderFinalProjectButton(phase){
 
 function renderPhaseContent(skillPhase){
     const phaseData = document.createElement("div");
+    phaseData.classList.add("phase-data");
 
     const phaseContentHeader = document.createElement("header");
+    phaseContentHeader.classList.add("phase-content-header");
 
-    const phaseTitle = document.createElement("span");
+    const phaseTitle = document.createElement("h3");
     phaseTitle.classList.add("phase-title");
     phaseTitle.textContent = skillPhase.title + " - " + skillPhase.shortDesc;
 
     const phaseDesc = document.createElement("p");
+    phaseDesc.classList.add("phase-description");
     phaseDesc.textContent = skillPhase.longDesc;
 
     const phaseTitleAndDesc = document.createElement("div");
     phaseTitleAndDesc.append(phaseTitle, phaseDesc);
 
     const phasePercentage = document.createElement("span");
+    phasePercentage.classList.add("phase-percentage");
     phasePercentage.textContent = "100%" + " abgeschlossen";
 
     phaseContentHeader.append(phaseTitleAndDesc, phasePercentage);
 
     // Progressbar 
     const progress = document.createElement("div");
+    progress.classList.add("phase-progress");
 
     const progressBar = document.createElement("progress");
     progressBar.classList.add("skill-progress-bar");
@@ -194,6 +210,7 @@ function renderPhaseContent(skillPhase){
     progressBar.max = 100;
 
     const progressInfo = document.createElement("span");
+    progressInfo.classList.add("phase-progress-info");
     progressInfo.textContent = "10 von 10 Themen abgeschlossen";
 
     progress.append(progressBar, progressInfo)
@@ -222,6 +239,7 @@ function createThemeButton(index, title){
     iconContainer.append(icon);
 
     const themeTitle = document.createElement("span");
+    themeTitle.classList.add("theme-title");
     themeTitle.textContent = index + ". " + title;
 
     button.append(iconContainer, themeTitle);
@@ -231,8 +249,11 @@ function createThemeButton(index, title){
 
 function createPhaseSection(title, desc){
     const phase = document.createElement("button");
-    const phaseTitle = document.createElement("span");
+    phase.classList.add("phase-section-button");
+    const phaseTitle = document.createElement("h2");
+    phaseTitle.classList.add("phase-section-title");
     const phaseDesc = document.createElement("span");
+    phaseDesc.classList.add("phase-section-description");
 
     phaseTitle.textContent = title;
     phaseDesc.textContent = desc;
@@ -244,9 +265,13 @@ function createPhaseSection(title, desc){
 
 function createOverviewSection(iconPath, curAmount, maxAmount = null, amountStyle, desc){
     const section = document.createElement("div");
+    section.classList.add("overview-content");
     const icon = document.createElement("img");
+    icon.classList.add("overview-icon");
     const amount = document.createElement("span");
+    amount.classList.add("overview-amount");
     const description = document.createElement("span");
+    description.classList.add("overview-description");
 
     icon.src = iconPath;
     description.textContent = desc;
@@ -255,13 +280,13 @@ function createOverviewSection(iconPath, curAmount, maxAmount = null, amountStyl
         amount.textContent = `${curAmount} / ${maxAmount}`;
     }
     else if(amountStyle === 1 && curAmount){
-        amount.textContent === curAmount;
+        amount.textContent = curAmount;
     }
-    else if (amountStyle === 3 && curAmount){
-        amount.textContent === `${curAmount}%`
+    else if (amountStyle === 2 && curAmount){
+        amount.textContent = `${curAmount}%`
     }
     else {
-        amount.textContent === "0";
+        amount.textContent = "0";
     }
 
     section.append(icon, amount, description);
