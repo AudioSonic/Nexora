@@ -1,5 +1,11 @@
 function init(){
     loadSkillList();
+    setDefaults();
+}
+
+function setDefaults(){
+    const firstEntry = skills[0];
+    loadSkillPage(firstEntry);
 }
 
 /* ----- Skill Buttons ----- */
@@ -63,7 +69,29 @@ function renderSkillPage(skill){
     const skillPage = document.createElement("article");
     skillPage.classList.add("skill-page");
 
-    // Header
+    const header = renderSkillPageHeader(skill);
+
+    const generalOverview = renderGeneralOverview(skill);
+
+    const phaseOverview = renderPhaseOverview(skill);
+
+   const footer = document.createElement("footer");
+   footer.classList.add("skill-page-footer");
+   const footerIcon = document.createElement("img");
+   footerIcon.classList.add("skill-page-footer-icon");
+   footerIcon.src="../assets/icons/icon_leaf.svg";
+   const motivationText = document.createElement("span");
+   motivationText.classList.add("skill-page-footer-text");
+   motivationText.textContent = "Dranbleiben zahlt sich aus. Jeder Schritt bringt dich weiter!";
+
+    footer.append(footerIcon, motivationText);
+
+    skillPage.append(header, generalOverview, phaseOverview, footer);
+
+    return skillPage;
+}
+
+function renderSkillPageHeader(skill){
     const header = document.createElement("header");
     header.classList.add("skill-page-header");
     const titleAndDesc = document.createElement("div");
@@ -92,11 +120,16 @@ function renderSkillPage(skill){
     description.textContent = skill.desc;
     
     titleAndDesc.append(title, description);
+
     header.append(logo, titleAndDesc);
 
-    // General Overview
+    return header;
+}
+
+function renderGeneralOverview(skill){
     const generalOverview = document.createElement("section");
     generalOverview.classList.add("general-overview");
+    generalOverview.classList.add("panel");
 
     const overviewFinalProjects = document.createElement("div");
     overviewFinalProjects.classList.add("general-overview-section");
@@ -122,53 +155,64 @@ function renderSkillPage(skill){
 
     generalOverview.append(overviewFinalProjects, overviewCompletedThemes, overviewCompletedPhases, overviewCompletePercentage);
 
+    return generalOverview;
+}
+
+function renderPhaseOverview(skill){
+    const phaseLayout = document.createElement("div");
+    phaseLayout.classList.add("phase-layout");
+
     const phaseContent = document.createElement("section");
     phaseContent.classList.add("phase-content");
+    phaseContent.classList.add("panel");
 
-    // Phase Overview
     const phaseOverview = document.createElement("section");
     phaseOverview.classList.add("phase-overview");
+    phaseOverview.classList.add("panel");
+    const phaseButtons = [];
     skill.phases.forEach(phase => {
         const projectPhase = createPhaseSection(phase.title, phase.shortDesc);
-        projectPhase.classList.add("project-phase");
+        phaseButtons.push(projectPhase);
         phaseOverview.append(projectPhase);
 
         projectPhase.addEventListener("click", () => {
-            const phaseData = renderPhaseContent(phase);
-            phaseContent.replaceChildren();
-            phaseContent.append(phaseData);
+        for (const phaseButton of phaseButtons) {
+            phaseButton.classList.remove("active");
+        }
+
+        projectPhase.classList.add("active");
+        const phaseData = renderPhaseContent(phase);
+        phaseContent.replaceChildren();
+
+        phaseContent.append(phaseData);
 
         const finalProjectButton = renderFinalProjectButton(phase);
         phaseContent.append(finalProjectButton);
         });
-    })
+    });
 
-   const footer = document.createElement("footer");
-   footer.classList.add("skill-page-footer");
-   const footerIcon = document.createElement("img");
-   footerIcon.classList.add("skill-page-footer-icon");
-   footerIcon.src="../assets/icons/icon_leaf.svg";
-   const motivationText = document.createElement("span");
-   motivationText.classList.add("skill-page-footer-text");
-   motivationText.textContent = "Dranbleiben zahlt sich aus. Jeder Schritt bringt dich weiter!";
+    phaseLayout.append(phaseOverview, phaseContent);
 
-    footer.append(footerIcon, motivationText);
+    if (phaseButtons.length > 0) {
+        phaseButtons[0].click();
+    }
 
-    skillPage.append(header,generalOverview, phaseOverview, phaseContent, footer);
-
-    return skillPage;
+    return phaseLayout;
 }
 
 function renderFinalProjectButton(phase){
  const finalProjectButton = document.createElement("button");
     finalProjectButton.classList.add("final-project-button");
     const finalProjectButtonLockIcon = document.createElement("img");
+    finalProjectButtonLockIcon.classList.add("final-project-icon");
     finalProjectButtonLockIcon.src = "../assets/icons/icon_lock.svg";
 
     const finalProjectButtonTitle = document.createElement("span");
+    finalProjectButtonTitle.classList.add("final-project-title");
     finalProjectButtonTitle.textContent = "Abschlussprojekt freischalten";
 
     const finalProjectButtonSubTitle = document.createElement("span");
+    finalProjectButtonSubTitle.classList.add("final-project-subtitle");
     finalProjectButtonSubTitle.textContent = "Schließe alle Themen ab, um das Abschlussprojekt zu starten.";
 
     finalProjectButton.append(finalProjectButtonLockIcon, finalProjectButtonTitle, finalProjectButtonSubTitle);
@@ -231,6 +275,7 @@ function renderPhaseContent(skillPhase){
 function createThemeButton(index, title){
     const button = document.createElement("button");
     button.classList.add("theme-button");
+    button.classList.add("btn");
 
     const iconContainer = document.createElement("div");
     iconContainer.classList.add("theme-check-icon-container");
@@ -242,7 +287,14 @@ function createThemeButton(index, title){
     themeTitle.classList.add("theme-title");
     themeTitle.textContent = index + ". " + title;
 
-    button.append(iconContainer, themeTitle);
+    const arrow = document.createElement("img");
+    arrow.src="../assets/icons/icon_arrow_right.svg";
+
+    const iconAndTitle = document.createElement("div");
+    iconAndTitle.classList.add("theme-icon-and-title");
+    iconAndTitle.append(iconContainer, themeTitle);
+
+    button.append(iconAndTitle, arrow);
 
     return button;
 }

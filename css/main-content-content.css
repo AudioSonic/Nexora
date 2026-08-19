@@ -1,16 +1,19 @@
-.general-overview {
+.panel{
     display: flex;
     flex-direction: row;
     background-color: var(--color-cards);
     justify-content: space-between;
     align-items: center;
-    min-height: 188px;
     margin: 24px 0 28px;
-    padding: 22px 0;
     border-radius: var(--border-radius-default);
     border-color: var(--border-color);
     border-style: solid;
     border-width: 1px;
+}
+
+.general-overview {
+    min-height: 188px;
+    padding: 22px 0;
  }
 
  .general-overview > div:not(:last-child) {
@@ -28,52 +31,135 @@
  }
 
 .phase-overview {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 75px;
+    padding-top: 7px;
+}
 
- }
+  .phase-overview > div:not(:last-child) {
+    border-right: 1px solid var(--border-color);
+}
 
-.project-phase {
+.phase-section-button {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 5px;
+    position: relative;
+    box-sizing: border-box;
 
- }
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 5px;
+    padding-top: 10px;
+}
+
+.phase-section-button.active::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--color-secondary);
+}
+
+.phase-section-button.active h2{
+    color: var(--color-secondary);
+}
 
 .phase-content {
-
+    flex-direction: column;
+    align-items: start;
+    padding: 15px;
  }
 
 .phase-content-header {
-
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
  }
 
-.phase-title {
-
+ .phase-percentage{
+    background-color: var(--color-secondary-light);  
+    color: var(--color-secondary);
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    border-radius: var(--border-radius-default);
+    padding: 5px;
  }
 
-.phase-description {
-
- }
-
-.phase-progress { 
-
+ .phase-progress { 
+    display: flex;
+    flex-direction: column; 
 }
 
-.skill-progress-bar {
+.phase-layout {
+    width: 100%;
+}
 
- }
+ .skill-progress-bar { 
+    width: 100%; 
+    height: 8px; 
+    appearance: none; 
+    border: none; 
+    border-radius: var(--border-radius-default); 
+}
 
-.phase-progress-info {
+.skill-progress-bar::-webkit-progress-bar { 
+    background-color: #30494b; 
+}
 
- }
+.skill-progress-bar::-webkit-progress-value { 
+    background-color: var(--color-secondary); 
+}
+
+.skill-progress-bar::-moz-progress-bar { 
+    background-color: var(--color-secondary);  
+}
 
 .phase-sections {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 0.85fr);
 
  }
 
 .theme-button {
-
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    margin: 3px;
  }
 
-.theme-title {
-    
+.theme-check-icon-container{
+    border-radius: 99px;
+    display: flex;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    align-items: center;
  }
+
+.theme-check-icon-container img{
+    width: 85%;
+    height: auto;
+ }
+
+.theme-icon-and-title{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
 
  .overview-content{
     display: flex;
@@ -101,11 +187,10 @@
 
  .overview-amount {
     color: var(--color-text-secondary);
-    font-size: 28px;
+    font-size: 20px;
     font-weight: 600;
     line-height: 1.1;
     min-height: 31px;
-    margin-bottom: 5px;
  }
 
  .overview-description {
@@ -115,3 +200,109 @@
     line-height: 1.35;
     align-self: center;
  }
+
+/* Phase content layout */
+.phase-content {
+    display: block;
+    margin: 24px 0 28px;
+    padding: 14px;
+    background-color: var(--color-cards);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-default);
+}
+
+.phase-content-header {
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.phase-title {
+    margin: 5px 0 6px;
+    color: var(--color-text-secondary);
+    font-size: 18px;
+    line-height: 1.2;
+}
+
+.phase-description {
+    margin: 0 0 16px;
+    color: var(--color-text-secondary);
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+.phase-percentage {
+    min-width: 187px;
+    min-height: 36px;
+}
+
+.phase-progress {
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.skill-progress-bar {
+    height: 10px;
+}
+
+.phase-progress-info {
+    margin-bottom: 2px;
+    color: var(--color-text-secondary);
+    font-size: 15px;
+}
+
+.phase-sections {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 5px 10px;
+    margin-bottom: 14px;
+}
+
+.theme-button {
+    min-height: 46px;
+    margin: 0;
+    padding: 8px 14px;
+    justify-content: space-between;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-default);
+    background-color: var(--color-cards);
+    color: var(--color-text-secondary);
+}
+
+.theme-icon-and-title {
+    align-items: center;
+}
+
+.theme-button > img {
+    width: 18px;
+    height: 18px;
+    opacity: 0.7;
+}
+
+.final-project-button {
+    display: flex;
+    width: 100%;
+    min-height: 64px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    column-gap: 10px;
+    padding: 9px 16px;
+    border: 0;
+    border-radius: var(--border-radius-default);
+    background-color: #dedede;
+    color: #666;
+}
+
+.skill-page-footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.final-project-icon { width: 18px; height: 18px; }
+.final-project-title { font-size: 17px; }
+.final-project-subtitle { flex-basis: 100%; text-align: center; font-size: 13px; }
+
+.phase-section-title{
+    font-size: 17px;
+}

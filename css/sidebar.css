@@ -1,8 +1,12 @@
 .sidebar{ 
+    position: sticky;
+    top: 0;
+    flex: 0 0 250px;
     background-color: var(--color-sidebar); 
     color: var(--color-text-primary); 
     width: 250px; 
     height: 100vh; 
+    overflow-y: auto;
     padding: 15px; 
     display: flex; 
     flex-direction: column; 
@@ -47,6 +51,7 @@ hr {
     padding: 10px; 
     border-radius: var(--border-radius-default); 
     color: var(--color-text-primary); 
+    border-color: var(--color-sidebar);
 }
 
 .skill-button-upper{ 
@@ -92,6 +97,10 @@ hr {
 
 .btn{ 
     width: 100%; 
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 7px;
+    min-height: 40px;
 }
 
 .btn-add-skill{ 
@@ -133,6 +142,7 @@ hr {
     display: flex; 
     flex-direction: row; 
     align-items: center; 
+    border-color:var(--color-sidebar);
 }
 
 .sidebar-skills {

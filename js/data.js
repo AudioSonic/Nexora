@@ -27,15 +27,24 @@ const skills = [
         logo: "../assets/logos/js_logo.png",
         desc: "Lerne JavaScript Schritt für Schritt und verfolge deinen Fortschritt.",
         phases: [
-            createPhase(
-                "Phase 1",
-                "Daten verstehen",
-                "Du lernst die grundlegenden Datentypen und den Umgang mit Variablen.",
-                "Variablen und Datentypen",
-                "Lerne Strings, Zahlen, Booleans und Arrays kennen.",
-                "const name = \"Alex\";\nlet score = 10;\n\nVariablen speichern Werte, die später im Programm verwendet werden.",
-                "Erstelle Variablen für deinen Namen, dein Alter und deinen aktuellen Punktestand."
-            ),
+            {
+                title: "Phase 1",
+                shortDesc: "Daten verstehen",
+                longDesc: "Du lernst die grundlegenden Datentypen und den Umgang mit Variablen.",
+                themes: [
+                    { id: 1, title: "Variablen" },
+                    { id: 2, title: "Datentypen" },
+                    { id: 3, title: "Operatoren" },
+                    { id: 4, title: "Bedingungen" },
+                    { id: 5, title: "Schleifen" },
+                    { id: 6, title: "Funktionen" },
+                    { id: 7, title: "Arrays" },
+                    { id: 8, title: "Arrays mit Objekten" },
+                    { id: 9, title: "Array-Methoden" },
+                    { id: 10, title: "Objekte" }
+                ],
+                finalProjects: []
+            },
             createPhase(
                 "Phase 2",
                 "Moderner Code",
