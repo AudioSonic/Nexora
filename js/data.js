@@ -208,109 +208,91 @@ const skills = [
                 "themes": [
                     {
                         "id": 1,
-                        "title": "Scope und Closures",
-                        "completed": true,
-                        "desc": "Grundlagen und praktische Übungen zum Thema Scope und Closures.",
+                        "title": "Moderner JavaScript-Code",
+                        "completed": false,
+                        "desc": "Grundlagen und praktische Übungen zum Thema Moderner JavaScript-Code.",
                         "contents": [
                             {
-                                "title": "Scope und Closures verstehen",
-                                "content": "In diesem Thema lernst du die wichtigsten Grundlagen von Scope und Closures kennen und wendest sie in kleinen Beispielen an."
+                                "title": "Moderner JavaScript-Code verstehen",
+                                "content": "In diesem Thema lernst du moderne Sprachmittel und saubere Muster in JavaScript kennen und wendest sie in kleinen Beispielen an."
                             }
                         ],
                         "exercises": [
                             {
-                                "title": "Scope und Closures üben",
-                                "content": "Erstelle ein kleines Beispiel, in dem du die Inhalte von Scope und Closures selbstständig anwendest."
+                                "title": "Moderner JavaScript-Code üben",
+                                "content": "Erstelle ein kleines Beispiel, in dem du moderne JavaScript-Muster selbstständig anwendest."
                             }
                         ]
                     },
                     {
                         "id": 2,
-                        "title": "Funktionsausdrücke",
-                        "completed": true,
-                        "desc": "Grundlagen und praktische Übungen zum Thema Funktionsausdrücke.",
+                        "title": "DOM & Events – kurze Vertiefung",
+                        "completed": false,
+                        "desc": "Grundlagen und praktische Übungen zum Thema DOM und Events.",
                         "contents": [
                             {
-                                "title": "Funktionsausdrücke verstehen",
-                                "content": "In diesem Thema lernst du die wichtigsten Grundlagen von Funktionsausdrücke kennen und wendest sie in kleinen Beispielen an."
+                                "title": "DOM & Events – kurze Vertiefung verstehen",
+                                "content": "In diesem Thema vertiefst du den Umgang mit dem DOM und Ereignissen und wendest ihn in kleinen Beispielen an."
                             }
                         ],
                         "exercises": [
                             {
-                                "title": "Funktionsausdrücke üben",
-                                "content": "Erstelle ein kleines Beispiel, in dem du die Inhalte von Funktionsausdrücke selbstständig anwendest."
+                                "title": "DOM & Events – kurze Vertiefung üben",
+                                "content": "Erstelle ein kleines Beispiel, in dem du DOM-Elemente auswählst und auf Events reagierst."
                             }
                         ]
                     },
                     {
                         "id": 3,
-                        "title": "Arrow Functions",
-                        "completed": true,
-                        "desc": "Grundlagen und praktische Übungen zum Thema Arrow Functions.",
+                        "title": "Typische UI-Manipulationen",
+                        "completed": false,
+                        "desc": "Grundlagen und praktische Übungen zum Thema typische UI-Manipulationen.",
                         "contents": [
                             {
-                                "title": "Arrow Functions verstehen",
-                                "content": "In diesem Thema lernst du die wichtigsten Grundlagen von Arrow Functions kennen und wendest sie in kleinen Beispielen an."
+                                "title": "Typische UI-Manipulationen verstehen",
+                                "content": "In diesem Thema lernst du typische Änderungen an Benutzeroberflächen kennen und wendest sie in kleinen Beispielen an."
                             }
                         ],
                         "exercises": [
                             {
-                                "title": "Arrow Functions üben",
-                                "content": "Erstelle ein kleines Beispiel, in dem du die Inhalte von Arrow Functions selbstständig anwendest."
+                                "title": "Typische UI-Manipulationen üben",
+                                "content": "Erstelle ein kleines Beispiel, in dem du Inhalte, Klassen und Attribute einer Oberfläche manipulierst."
                             }
                         ]
                     },
                     {
                         "id": 4,
-                        "title": "Destructuring",
+                        "title": "DOM + Daten",
                         "completed": false,
-                        "desc": "Grundlagen und praktische Übungen zum Thema Destructuring.",
+                        "desc": "Grundlagen und praktische Übungen zum Thema DOM und Daten.",
                         "contents": [
                             {
-                                "title": "Destructuring verstehen",
-                                "content": "In diesem Thema lernst du die wichtigsten Grundlagen von Destructuring kennen und wendest sie in kleinen Beispielen an."
+                                "title": "DOM + Daten verstehen",
+                                "content": "In diesem Thema lernst du, Daten in einer Benutzeroberfläche darzustellen und dynamisch zu aktualisieren."
                             }
                         ],
                         "exercises": [
                             {
-                                "title": "Destructuring üben",
-                                "content": "Erstelle ein kleines Beispiel, in dem du die Inhalte von Destructuring selbstständig anwendest."
+                                "title": "DOM + Daten üben",
+                                "content": "Erstelle ein kleines Beispiel, das Daten verarbeitet und daraus DOM-Inhalte erzeugt."
                             }
                         ]
                     },
                     {
                         "id": 5,
-                        "title": "Spread und Rest",
+                        "title": "Persistenz mit `localStorage`",
                         "completed": false,
-                        "desc": "Grundlagen und praktische Übungen zum Thema Spread und Rest.",
+                        "desc": "Grundlagen und praktische Übungen zum Thema Persistenz mit localStorage.",
                         "contents": [
                             {
-                                "title": "Spread und Rest verstehen",
-                                "content": "In diesem Thema lernst du die wichtigsten Grundlagen von Spread und Rest kennen und wendest sie in kleinen Beispielen an."
+                                "title": "Persistenz mit localStorage verstehen",
+                                "content": "In diesem Thema lernst du, Daten mit localStorage im Browser zu speichern und wieder auszulesen."
                             }
                         ],
                         "exercises": [
                             {
-                                "title": "Spread und Rest üben",
-                                "content": "Erstelle ein kleines Beispiel, in dem du die Inhalte von Spread und Rest selbstständig anwendest."
-                            }
-                        ]
-                    },
-                    {
-                        "id": 6,
-                        "title": "Template Literals",
-                        "completed": false,
-                        "desc": "Grundlagen und praktische Übungen zum Thema Template Literals.",
-                        "contents": [
-                            {
-                                "title": "Template Literals verstehen",
-                                "content": "In diesem Thema lernst du die wichtigsten Grundlagen von Template Literals kennen und wendest sie in kleinen Beispielen an."
-                            }
-                        ],
-                        "exercises": [
-                            {
-                                "title": "Template Literals üben",
-                                "content": "Erstelle ein kleines Beispiel, in dem du die Inhalte von Template Literals selbstständig anwendest."
+                                "title": "Persistenz mit localStorage üben",
+                                "content": "Erstelle ein kleines Beispiel, das Benutzerdaten mit localStorage speichert und beim Laden wiederherstellt."
                             }
                         ]
                     }
