@@ -71,10 +71,6 @@ hr {
     height: 27px; 
 }
 
-.theme-check-icon-container{ 
-    background-color: var(--color-secondary); 
-}
-
 .skill-button-progress-bar { 
     width: 100%; 
     height: 8px; 
@@ -93,14 +89,6 @@ hr {
 
 .skill-button-progress-bar::-moz-progress-bar { 
     background-color: #69c978; 
-}
-
-.btn{ 
-    width: 100%; 
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 7px;
-    min-height: 40px;
 }
 
 .btn-add-skill{ 
@@ -129,9 +117,10 @@ hr {
     display: flex; 
     flex-direction: column; 
     gap:10px; 
+    align-items: center;
 }
 
-.total-progress-text{ 
+#total-progress-text{ 
     display: flex; 
     text-align: center; 
     line-height: 27px; 
@@ -144,30 +133,6 @@ hr {
     align-items: center; 
     border-color:var(--color-sidebar);
 }
-
-.sidebar-skills {
-
- }
-
-.sidebar-section-title {
-
- }
-
-.sidebar-nav {
-
- }
-
-.total-progress-title {
-
- }
-
-.total-progress-circle {
-
- }
-
-.sidebar-settings {
-
- }
 
 .progress-circle { 
     position: relative; 
