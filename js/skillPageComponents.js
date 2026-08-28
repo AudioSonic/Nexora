@@ -4,7 +4,7 @@ function createFinalProjectButton(phase){
     finalProjectButton.disabled = true;
     const finalProjectButtonLockIcon = document.createElement("img");
     finalProjectButtonLockIcon.classList.add("final-project-icon");
-    finalProjectButtonLockIcon.src = "../assets/icons/icon_lock.svg";
+    finalProjectButtonLockIcon.src = "assets/icons/icon_lock.svg";
 
     const finalProjectButtonTitle = document.createElement("span");
     finalProjectButtonTitle.classList.add("final-project-title");
@@ -46,7 +46,7 @@ function createThemeButton(index, title, completed){
     }
 
     const icon = document.createElement("img");
-    icon.src="../assets/icons/icon_check.svg";
+    icon.src="assets/icons/icon_check.svg";
     iconContainer.append(icon);
 
     const themeTitle = document.createElement("span");
@@ -54,7 +54,7 @@ function createThemeButton(index, title, completed){
     themeTitle.textContent = index + ". " + title;
 
     const arrow = document.createElement("img");
-    arrow.src="../assets/icons/icon_arrow_right.svg";
+    arrow.src="assets/icons/icon_arrow_right.svg";
 
     const iconAndTitle = document.createElement("div");
     iconAndTitle.classList.add("theme-icon-and-title");
@@ -74,7 +74,7 @@ function createPhaseSection(skill, phase){
     titleAndLock.classList.add("phase-title-and-lock");
 
     const lockIcon = document.createElement("img");
-    lockIcon.src = "../assets/icons/icon_lock.svg";
+    lockIcon.src = "assets/icons/icon_lock.svg";
     lockIcon.classList = "phase-section-lock-icon";
 
     if(checkPhaseCompletion(skill, phase)){

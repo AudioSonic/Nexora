@@ -2,7 +2,7 @@ const skills = [
     {
         "id": 1,
         "name": "JavaScript",
-        "logo": "../assets/logos/js_logo.png",
+        "logo": "assets/logos/js_logo.png",
         "desc": "Lerne JavaScript von den Grundlagen bis zur Strukturierung moderner Anwendungen.",
         "phases": [
             {
@@ -566,7 +566,7 @@ const skills = [
     {
         "id": 2,
         "name": "C#",
-        "logo": "../assets/logos/csharp_logo.png",
+        "logo": "assets/logos/csharp_logo.png",
         "desc": "Baue professionelle .NET-Anwendungen mit C#, APIs, Datenbanken und moderner Backend-Architektur.",
         "phases": [
             {

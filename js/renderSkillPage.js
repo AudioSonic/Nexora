@@ -90,22 +90,22 @@ function renderGeneralOverview(skill){
 
     const overviewFinalProjects = document.createElement("div");
     overviewFinalProjects.classList.add("general-overview-section");
-    const finalProjectsContent = createOverviewSection("../assets/icons/icon_final_project.svg", finalProjectCount, null, 1, "Abschlussprojekte");
+    const finalProjectsContent = createOverviewSection("assets/icons/icon_final_project.svg", finalProjectCount, null, 1, "Abschlussprojekte");
     overviewFinalProjects.append(finalProjectsContent);
 
     const overviewCompletedThemes = document.createElement("div");
     overviewCompletedThemes.classList.add("general-overview-section");
-    const completedThemesContent = createOverviewSection("../assets/icons/icon_completed_themes.svg", completedThemeCount, totalThemeCount, 0, "Themen");
+    const completedThemesContent = createOverviewSection("assets/icons/icon_completed_themes.svg", completedThemeCount, totalThemeCount, 0, "Themen");
     overviewCompletedThemes.append(completedThemesContent);
 
     const overviewCompletedPhases = document.createElement("div");
     overviewCompletedPhases.classList.add("general-overview-section");
-    const completedPhases = createOverviewSection("../assets/icons/icon_completed_phases.svg", completedPhaseCount, totalPhasesCount, 0, "Phasen");
+    const completedPhases = createOverviewSection("assets/icons/icon_completed_phases.svg", completedPhaseCount, totalPhasesCount, 0, "Phasen");
     overviewCompletedPhases.append(completedPhases);
 
     const overviewCompletePercentage = document.createElement("div");
     overviewCompletePercentage.classList.add("general-overview-section");
-    const completedPercentageContent = createOverviewSection("../assets/icons/icon_completed_percentage.svg", totalSkillProgress, null, 2, "Fortschritt");
+    const completedPercentageContent = createOverviewSection("assets/icons/icon_completed_percentage.svg", totalSkillProgress, null, 2, "Fortschritt");
     overviewCompletePercentage.append(completedPercentageContent);
 
     const hr = document.createElement("hr");
@@ -214,7 +214,7 @@ function renderSkillPageFooter(){
    footer.classList.add("skill-page-footer");
    const footerIcon = document.createElement("img");
    footerIcon.classList.add("skill-page-footer-icon");
-   footerIcon.src="../assets/icons/icon_leaf.svg";
+   footerIcon.src="assets/icons/icon_leaf.svg";
    const motivationText = document.createElement("span");
    motivationText.classList.add("skill-page-footer-text");
    motivationText.textContent = "Dranbleiben zahlt sich aus. Jeder Schritt bringt dich weiter!";
