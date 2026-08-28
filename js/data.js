@@ -1662,7 +1662,7 @@ const skills = [
     {
         "id": 3,
         "name": "Gitarre",
-        "logo": "../assets/logos/guitar_logo.png",
+        "logo": "",
         "desc": "Lerne Akkorde, Rhythmen, Melodien und deine ersten vollständigen Songs auf der Gitarre.",
         "phases": [
             {

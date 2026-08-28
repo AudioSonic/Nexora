@@ -23,16 +23,21 @@ function renderSkillPageHeader(skill){
     header.classList.add("skill-page-header");
     const titleAndDesc = document.createElement("div");
     titleAndDesc.classList.add("skill-page-title-group");
-    const logo = document.createElement("img");
+    let logo = document.createElement("img");
     
-    if (skill.logo) {
-        logo.src = skill.logo;
+    if(skill.logo){
 
-        logo.onerror = () => {
-            logo.replaceWith(document.createTextNode(skill.name[0].toUpperCase()));
-        };
-    } else {
-        logo.replaceWith(document.createTextNode(skill.name[0].toUpperCase()));
+        logo.src = skill.logo;
+        logo.alt = skill.alt;
+    }
+    else{
+        logo = document.createElement("span");
+        logo.classList.add("skill-logo");
+
+        logo.textContent = skill.name.charAt(0).toUpperCase();
+        logo.style.backgroundColor = "darkgrey";
+        logo.style.fontWeight = "bold";
+        logo.style.fontSize = "23px";
     }
 
 
@@ -172,7 +177,7 @@ function renderPhaseContent(skillPhase){
 
     const phasePercentage = document.createElement("span");
     phasePercentage.classList.add("phase-percentage");
-    phasePercentage.textContent = "100%" + " abgeschlossen";
+    phasePercentage.textContent = calculateProgressBarValue(skillPhase.themes) + "% abgeschlossen";
 
     phaseContentHeader.append(phaseTitleAndDesc, phasePercentage);
 
