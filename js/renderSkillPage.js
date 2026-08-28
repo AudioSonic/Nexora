@@ -192,7 +192,10 @@ function renderPhaseContent(skillPhase){
 
     const progressInfo = document.createElement("span");
     progressInfo.classList.add("phase-progress-info");
-    progressInfo.textContent = "10 von 10 Themen abgeschlossen";
+    const completedThemes = skillPhase.themes.filter(theme => theme.completed === true).length;
+    const allThemesCount = skillPhase.themes.length; 
+
+    progressInfo.textContent = `${completedThemes} von ${allThemesCount} Themen abgeschlossen`;
 
     progress.append(progressBar, progressInfo)
 
