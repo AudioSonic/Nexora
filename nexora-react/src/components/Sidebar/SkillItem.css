@@ -1,0 +1,53 @@
+.skill-logo{ 
+    width: 30px; 
+    height: 30px;
+    border-radius: var(--border-radius-default);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.skill-button{ 
+    background-color: var(--color-cards-secondary); 
+    padding: 10px; 
+    border-radius: var(--border-radius-default); 
+    color: var(--color-text-primary); 
+    border-color: var(--color-sidebar);
+}
+
+.skill-button-upper{ 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+}
+
+.logo-title{ 
+    display: flex; 
+    gap: 10px; 
+    align-items: center; 
+}
+
+.logo-title img{ 
+    width: 27px; 
+    height: 27px; 
+}
+
+.skill-button-progress-bar { 
+    width: 100%; 
+    height: 8px; 
+    appearance: none; 
+    border: none; 
+    border-radius: var(--border-radius-default); 
+}
+
+.skill-button-progress-bar::-webkit-progress-bar { 
+    background-color: #30494b; 
+}
+
+.skill-button-progress-bar::-webkit-progress-value { 
+    background-color: #69c978; 
+}
+
+.skill-button-progress-bar::-moz-progress-bar { 
+    background-color: #69c978; 
+}

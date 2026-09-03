@@ -1,0 +1,18 @@
+:root {
+    --color-sidebar: #0C2026;
+    --color-main-content: #fbfaf781; 
+    --color-cards: #ffffff;
+    --color-cards-secondary: #162B31;
+    --color-text-primary: #FBFEFD;
+    --color-text-secondary: #01141E;
+    --color-text-highlight: #5DB373;
+
+    --color-secondary: #197756;
+    --color-secondary-light: #E5EBDF;
+    --color-accent: #EBEEE5;
+
+    --border-radius-default: 7px;
+    --border-color: rgba(0,0,0,0.15);
+
+    --progress: 92%;
+}

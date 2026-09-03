@@ -1,0 +1,15 @@
+#btn-add-skill{ 
+    background-color: var(--color-cards-secondary); 
+    color: var(--color-text-highlight); 
+    border-color: var(--color-text-highlight); 
+    border-style: solid; 
+    border-width: 1px; 
+    height: 40px; 
+    border-radius: var(--border-radius-default); 
+}
+
+#skill-list{ 
+    display: flex; 
+    flex-direction: column; 
+    gap: 10px; 
+}

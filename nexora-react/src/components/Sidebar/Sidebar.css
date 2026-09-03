@@ -1,0 +1,28 @@
+#sidebar{ 
+    position: sticky;
+    top: 0;
+    flex: 0 0 250px;
+    background-color: var(--color-sidebar); 
+    color: var(--color-text-primary); 
+    width: 250px; 
+    height: 100vh; 
+    overflow-y: auto;
+    padding: 15px; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between; 
+}
+
+#nexora-logo{ 
+    width: 85%; 
+    height: auto; 
+    margin-bottom: 20px; 
+}
+
+#btn-settings{ 
+    color: var(--color-text-primary); 
+    display: flex; 
+    flex-direction: row; 
+    align-items: center; 
+    border-color:var(--color-sidebar);
+}
