@@ -1,0 +1,28 @@
+.final-project-button-inactive {
+    display: flex;
+    width: 100%;
+    min-height: 64px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    column-gap: 10px;
+    padding: 9px 16px;
+    border-radius: var(--border-radius-default);
+    background-color: #dedede;
+    color: #666;
+}
+
+.final-project-button-active {
+	display: flex;
+	width: 100%;
+	min-height: 64px;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	column-gap: 10px;
+	padding: 9px 16px;
+	border-radius: var(--border-radius-default);
+	border: 1px solid var(--border-color);
+	color: var(--color-text-secondary);
+	background-color: var(--color-cards);
+}

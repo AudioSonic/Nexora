@@ -1,0 +1,42 @@
+.main-content {
+	flex: 1;
+	min-width: 0;
+	height: 100vh;
+	overflow-y: auto;
+	overflow-x: hidden;
+	background-color: var(--color-main-content);
+	color: var(--color-text-secondary);
+	padding: 20px;
+}
+
+.main-content h1 {
+	font-size: 25px;
+}
+
+.skill-page-header {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 15px;
+}
+
+.skill-page-logo {
+	width: 35px;
+	height: 35px;
+}
+
+.phase-content {
+	display: block;
+	margin: 24px 0 28px;
+	padding: 14px;
+	background-color: var(--color-cards);
+	border: 1px solid var(--border-color);
+	border-radius: var(--border-radius-default);
+}
+
+#skill-page-footer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+}

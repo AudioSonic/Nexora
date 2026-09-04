@@ -1,0 +1,72 @@
+.general-overview-section {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 142px;
+ }
+
+ .general-overview-section:nth-child(-n + 3) .overview-icon {
+    transform: translateY(4px);
+ }
+
+  .overview-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+    max-width: 150px;
+ }
+
+   .overview-icon{
+    height: 64px;
+    width: 64px;
+    display: block;
+    object-fit: contain;
+    background-color: var(--color-accent);
+    padding: 15px;
+    border-radius: 999px;
+    margin-bottom: 15px;
+ }
+
+ .overview-amount {
+    color: var(--color-text-secondary);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.1;
+    min-height: 31px;
+ }
+
+ .overview-description {
+    max-width: 190px;
+    color: var(--color-text-secondary);
+    font-size: 15px;
+    line-height: 1.35;
+    align-self: center;
+ }
+
+ .general-overview {
+    min-height: 188px;
+    padding: 22px 0;
+ }
+
+ .general-overview > div:not(:last-child) {
+    border-right: 1px solid var(--border-color);
+}
+
+.general-overview-section {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 142px;
+ }
+
+  .general-overview-section:nth-child(-n + 3) .overview-icon {
+    transform: translateY(4px);
+ }

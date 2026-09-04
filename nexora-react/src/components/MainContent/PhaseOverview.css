@@ -1,0 +1,84 @@
+.phase-content {
+	display: block;
+	margin: 24px 0 28px;
+	padding: 14px;
+	background-color: var(--color-cards);
+	border: 1px solid var(--border-color);
+	border-radius: var(--border-radius-default);
+}
+
+.phase-content-header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+ }
+
+ .phase-title {
+    margin: 5px 0 6px;
+    color: var(--color-text-secondary);
+    font-size: 18px;
+    line-height: 1.2;
+}
+
+.phase-description {
+    margin: 0 0 16px;
+    color: var(--color-text-secondary);
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+ .phase-percentage{
+    background-color: var(--color-secondary-light);  
+    color: var(--color-secondary);
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    border-radius: var(--border-radius-default);
+    padding: 5px;
+    width: 187px;
+    height: 36px;
+ }
+
+.phase-progress {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.skill-progress-bar { 
+    width: 100%; 
+    height: 8px; 
+    appearance: none; 
+    border: none; 
+    border-radius: var(--border-radius-default); 
+}
+
+.skill-progress-bar::-webkit-progress-bar { 
+    background-color: #30494b; 
+}
+
+.skill-progress-bar::-webkit-progress-value { 
+    background-color: var(--color-secondary); 
+}
+
+.skill-progress-bar::-moz-progress-bar { 
+    background-color: var(--color-secondary);  
+}
+
+.phase-progress-info {
+    margin-bottom: 2px;
+    color: var(--color-text-secondary);
+    font-size: 15px;
+}
+
+.phase-sections {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 5px 10px;
+    margin-bottom: 14px;
+}
