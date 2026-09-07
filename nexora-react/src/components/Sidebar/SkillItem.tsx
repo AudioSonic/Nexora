@@ -1,16 +1,17 @@
 import "./SkillItem.css"
 
 type SkillItemProps = {
-    name: string;
-    progress: number;
-    logoSrc: string;
-    logoAlt: string;
-
+    name: string,
+    progress: number,
+    logoSrc: string,
+    logoAlt: string,
+    skillId: number,
+    onSkillSelect: (skillId: number) => void
 };
 
 function SkillItem(props: SkillItemProps){
     return(
-        <button className="btn skill-button">
+        <button className="btn skill-button" onClick={() => props.onSkillSelect(props.skillId)}>
             <div className="skill-button-upper">
                 <div className="logo-title">
                     <img className="skill-logo" src={props.logoSrc} alt={props.logoAlt}/>

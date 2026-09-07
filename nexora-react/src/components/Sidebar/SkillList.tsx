@@ -1,19 +1,35 @@
 import "./SkillList.css"
-import CSharpLogo from "../../assets/temp/csharp_logo.png"
-import JSLogo from "../../assets/temp/js_logo.png"
-import ReactLogo from "../../assets/temp/react_logo.svg"
 import SkillItem from './SkillItem'
+import { skills, type Skill } from "../data/data";
 
-function SkillList(){
+type SkillListProps = {
+    onSkillSelect: (skillId: number) => void 
+}
+
+function calculateProgress(prop: Skill): number {
+    let totalThemesCount = 0;
+    let completedThemesCount = 0;
+
+    prop.phases.forEach(phase => {
+        totalThemesCount += phase.themes.length;
+        completedThemesCount += phase.themes.filter(theme => theme.completed).length;
+    });
+
+    return Math.round((completedThemesCount / totalThemesCount) * 100);
+}
+
+function SkillList(props: SkillListProps){
     return (
             <div className="skills" id="sidebar-skills">
                 <span id="sidebar-section-title">MEINE SKILLS</span>
                 <nav id="sidebar-nav">
 
                     <div id="skill-list">
-                        <SkillItem name="JavaScript" progress={70} logoSrc={JSLogo} logoAlt=""/>
-                        <SkillItem name="C#" progress={55} logoSrc={CSharpLogo} logoAlt="C# Logo"/>
-                        <SkillItem name="React" progress={50} logoSrc={ReactLogo} logoAlt="React Logo"/>
+                        {skills.map(skill => 
+                            <SkillItem name={skill.name} progress={calculateProgress(skill)} 
+                            logoSrc={skill.logo} logoAlt={skill.logoAlt} skillId={skill.id}
+                            onSkillSelect={props.onSkillSelect} key={skill.id}/>
+                        )}
                     </div>
 
                     <button className="btn" id="btn-add-skill">+ Neuen Skill hinzufügen</button>

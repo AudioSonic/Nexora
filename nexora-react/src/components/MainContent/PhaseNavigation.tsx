@@ -1,13 +1,18 @@
 import "./PhaseNavigation.css"
 import Phase from "./ProjectPhase"
+import { useState } from "react";
+import { type Skill} from "../data/data";
 
-function PhaseNavigation(){
+function PhaseNavigation({ skill }: { skill: Skill }){
+    const [activePhase, setActivePhase] = useState(1);
     return (
         <section className="panel phase-overview">
-            <Phase phaseTitle="Phase 1" unlocked={true} phaseDescription="Daten verstehen"/>
-            <Phase phaseTitle="Phase 2" unlocked={true} phaseDescription="Moderner Code"/>
-            <Phase phaseTitle="Phase 3" unlocked={false} phaseDescription="Daten austauschen"/>
-            <Phase phaseTitle="Phase 4" unlocked={false} phaseDescription="Strukturieren"/>
+            {skill.phases.map(phase => 
+                <Phase phaseTitle={phase.title} unlocked={true} 
+                phaseDescription={phase.shortDesc} key={phase.id} active={phase.id === activePhase}
+                onSelect={() => setActivePhase(phase.id) }/>
+            )}
+          
         </section>
     )
 }

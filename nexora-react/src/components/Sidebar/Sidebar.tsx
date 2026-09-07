@@ -3,15 +3,17 @@ import NexoraLogo from "../../assets/logos/Nexora_Logo.png";
 import SettingsIcon from "../../assets/icons/icon_settings.svg"
 import SkillList from "./SkillList";
 import TotalProgress from "./TotalProgress";
+type SidebarProps = {
+    onSkillSelect: (skillId: number) => void;
+}
 
-function Sidebar(){
+function Sidebar(props: SidebarProps){
     return (
         <aside id="sidebar">
             <div>
                 <img src={NexoraLogo} alt="Nexora" id="nexora-logo"/>
-                <SkillList />
+                <SkillList onSkillSelect={props.onSkillSelect}/>
             </div>
-
             <TotalProgress />
 
             <div id="sidebar-settings">

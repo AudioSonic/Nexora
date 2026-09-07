@@ -1,28 +1,27 @@
 import "./MainContent.css" 
-import JSLogo from "../../assets/logos/js_logo.png"
 import FooterIcon from "../../assets/icons/icon_leaf.svg"
 import PhaseContent from "./PhaseContent"
 import PhaseNavigation from "./PhaseNavigation"
 import PhaseOverview from "./PhaseOverview"
+import type { Skill } from "../data/data"
 
-function MainContent(){
+function MainContent({ skill }: { skill: Skill }){
     return (
         <div className="main-content">
                 <div className="skill-page-header">
-                    <img src={JSLogo} alt="JavaScript Logo" className="skill-page-logo"/>
+                    <img src={skill.logo} alt={skill.logoAlt} className="skill-page-logo"/>
                     <div className="skill-page-title-group">
-                        <h1 className="skill-page-title">JavaScript</h1>
-                        <p className="skill-page-description">
-                            Lerne JavaScript von den Grundlagen bis zur Strukturierung
-                            moderner Anwendungen.
-                        </p>
+                        <h1 className="skill-page-title">{skill.name}</h1>
+                        <p className="skill-page-description">{skill.desc}</p>
                     </div>
                 </div>
 
 
                 <PhaseContent />
-                <PhaseNavigation />
-                <PhaseOverview />
+                <PhaseNavigation skill={skill} />
+                <PhaseOverview phaseTitle="Title" phaseDescription="Description" phasePercentage={70} totalAmountOfThemes={30} completedAmountOfThemes={15} themeTitle="Variable" themeCompleted={false}/>
+
+
 
                 <div id="skill-page-footer">
                     <img
