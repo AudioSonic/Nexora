@@ -57,7 +57,7 @@ function PhaseOverview(prop: PhaseOverviewProp){
                 )}
             </div>
 
-            <FinalProjectButton title="Abschlussprojektfreigeschaltet" subTitle="Zum Abschlussprojekt" unlocked={true}/>
+            <FinalProjectButton title="Abschlussprojektfreigeschaltet" subTitle="Zum Abschlussprojekt" unlocked={calculateProgress(prop.phase).percentage === 100 ? true : false}/>
         </section>
     )
 }

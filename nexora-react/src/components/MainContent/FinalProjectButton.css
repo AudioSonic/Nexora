@@ -1,5 +1,7 @@
 .final-project-button-inactive {
     display: flex;
+	flex-direction: column;
+	gap: 5px;
     width: 100%;
     min-height: 64px;
     align-items: center;
@@ -25,4 +27,19 @@
 	border: 1px solid var(--border-color);
 	color: var(--color-text-secondary);
 	background-color: var(--color-cards);
+	font-size: 50px;
+}
+
+.final-project-locked{
+	display: flex;
+	flex-direction: row;
+	gap: 10px;
+}
+
+.final-project-title-active{
+	font-size: 25px;
+}
+
+.final-project-title-inactive{
+	font-size: 19px;
 }
