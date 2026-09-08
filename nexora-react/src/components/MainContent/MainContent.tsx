@@ -6,6 +6,7 @@ import PhaseOverview from "./PhaseOverview"
 import type { Skill } from "../data/data"
 import type { Phase } from "../data/data"
 import type { Theme } from "../data/data"
+import SkillLogo from "../SkillLogo"
 
 type MainContentProps = {
     skill: Skill,
@@ -19,7 +20,7 @@ function MainContent(props: MainContentProps) {
     return (
         <div className="main-content">
                 <div className="skill-page-header">
-                    <img src={props.skill.logo} alt={props.skill.logoAlt} className="skill-page-logo"/>
+                    <SkillLogo name={props.skill.name} src={props.skill.logo} alt={props.skill.logoAlt} className="skill-page-logo" />
                     <div className="skill-page-title-group">
                         <h1 className="skill-page-title">{props.skill.name}</h1>
                         <p className="skill-page-description">{props.skill.desc}</p>

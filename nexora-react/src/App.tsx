@@ -9,6 +9,12 @@ function App() {
   const [activePhaseId, setPhaseId] = useState(1);
   const [activeThemeId, setThemeId] = useState(1);
 
+  function handleSkillSelect(skillId: number) {
+    setSkillId(skillId);
+    setPhaseId(1);
+    setThemeId(1);
+  }
+
   const selectedSkill = skills.find(
     skill => skill.id === activeSkillId
   );
@@ -36,7 +42,7 @@ function App() {
   return (
     <>
     <div id="app">
-      <Sidebar onSkillSelect={setSkillId}/>
+      <Sidebar onSkillSelect={handleSkillSelect}/>
       <MainContent skill={selectedSkill} phase={selectedPhase} theme={selectedTheme} activePhaseId={activePhaseId} onPhaseSelect={setPhaseId}/>
     </div>
     </>

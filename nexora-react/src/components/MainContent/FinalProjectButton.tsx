@@ -3,22 +3,21 @@ import LockIcon from "../../assets/icons/icon_lock.svg"
 
 type FinalProjectButtonProp = {
     title: string,
-    subTitle: string,
     unlocked: boolean
 }
 
 function FinalProjectButton(props: FinalProjectButtonProp){
     return(
-        <button className={props.unlocked ? "btn final-project-button-active" : "btn final-project-button-inactive"}>
+        <button disabled={!props.unlocked} className={props.unlocked ? "btn final-project-button-active" : "final-project-button-inactive"}>
             <div className="final-project-locked">
                 <img className="final-project-icon" src={LockIcon} style={props.unlocked ? {display: "none"} : {display: "flex"}}/>
                 <span className={props.unlocked ? "final-project-title-active" : "final-project-title-inactive"}>
-                    {props.unlocked ? "Zum Abschlussprojekt" : "Abschlussprojekt freischalten"}
+                    {props.unlocked ? `Abschlussprojekt: ${props.title}` : "Abschlussprojekt gesperrt"}
                 </span>
             </div>
             
             <span className="final-project-subtitle">
-                {props.unlocked ? "" : "Schalte alle Themen frei, um das Abschlussprojekt zu starten."}
+                {props.unlocked ? "" : "Schließe alle Themen ab, um das Abschlussprojekt freizuschalten."}
             </span>
         </button>
     )

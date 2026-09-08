@@ -11,23 +11,53 @@
     padding: 9px 16px;
     border-radius: var(--border-radius-default);
     background-color: #dedede;
+	border-color: #ffffff;
     color: #666;
 }
 
 .final-project-button-active {
+	position: relative;
 	display: flex;
 	width: 100%;
-	min-height: 64px;
+	min-height: 78px;
 	align-items: center;
 	justify-content: center;
 	flex-wrap: wrap;
-	column-gap: 10px;
-	padding: 9px 16px;
-	border-radius: var(--border-radius-default);
-	border: 1px solid var(--border-color);
+	gap: 7px;
+	padding: 15px 52px 15px 20px;
+	border: 1px solid rgba(25, 119, 86, 0.28);
+	border-radius: 12px;
 	color: var(--color-text-secondary);
-	background-color: var(--color-cards);
-	font-size: 50px;
+	background: linear-gradient(135deg, #ffffff 0%, #f3faf5 100%);
+	box-shadow: 0 5px 14px rgba(25, 119, 86, 0.1);
+	text-align: left;
+	transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.final-project-button-active::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 12px;
+	bottom: 12px;
+	width: 4px;
+	border-radius: 4px;
+	background: var(--color-secondary);
+}
+
+.final-project-button-active::after {
+	content: "→";
+	position: absolute;
+	right: 20px;
+	font-size: 24px;
+	font-weight: 400;
+	color: var(--color-secondary);
+}
+
+.final-project-button-active:not(:disabled):hover {
+	border-color: var(--color-secondary);
+	box-shadow: 0 8px 20px rgba(25, 119, 86, 0.18);
+	transform: translateY(-1px);
 }
 
 .final-project-locked{
@@ -37,7 +67,9 @@
 }
 
 .final-project-title-active{
-	font-size: 25px;
+	font-size: 17px;
+	font-weight: 700;
+	letter-spacing: 0.01em;
 }
 
 .final-project-title-inactive{

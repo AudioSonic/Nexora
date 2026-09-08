@@ -1,0 +1,14 @@
+.skill-logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    border-radius: var(--border-radius-default);
+}
+
+.skill-logo-fallback {
+    background-color: darkgrey;
+    color: var(--color-text-primary);
+    font-weight: bold;
+    font-size: 23px;
+}

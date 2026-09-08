@@ -1,9 +1,10 @@
 import "./SkillItem.css"
+import SkillLogo from "../SkillLogo"
 
 type SkillItemProps = {
     name: string,
     progress: number,
-    logoSrc: string,
+    logoSrc: string | null,
     logoAlt: string,
     skillId: number,
     onSkillSelect: (skillId: number) => void
@@ -14,7 +15,7 @@ function SkillItem(props: SkillItemProps){
         <button className="btn skill-button" onClick={() => props.onSkillSelect(props.skillId)}>
             <div className="skill-button-upper">
                 <div className="logo-title">
-                    <img className="skill-logo" src={props.logoSrc} alt={props.logoAlt}/>
+                    <SkillLogo name={props.name} src={props.logoSrc} alt={props.logoAlt} />
                     <span>{props.name}</span>
                 </div>
                 <span className="skill-percentage">{props.progress}%</span>

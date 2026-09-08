@@ -1,7 +1,7 @@
 export type Skill = {
     id: number;
     name: string;
-    logo: string;
+    logo: string | null;
     logoAlt: string;
     desc: string;
     phases: Phase[];
@@ -242,6 +242,11 @@ export const skills: Skill[] = [
                     {
                         "id": 1,
                         "title": "Kleiner Bewerbungsdaten-Tracker",
+                        "completed": true
+                    },
+                    {
+                        "id": 2,
+                        "title": "Nexora",
                         "completed": true
                     }
                 ]

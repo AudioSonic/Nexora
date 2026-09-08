@@ -22,7 +22,7 @@ function calculateProgress(prop: Skill) {
 
         completedFinalProjectCount += phase.finalProjects.filter(project => project.completed).length;
         
-        if(phase.themes.every(theme => theme.completed)){
+        if(phase.themes.every(theme => theme.completed) && phase.finalProjects.every(project => project.completed)){
             completedPhaseCount++;
         }
     });

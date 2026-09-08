@@ -10,7 +10,7 @@ type PhaseOverviewProp = {
 }
 
 function calculateProgress(prop: Phase) {
-    let totalThemesCount = prop.themes.length;
+    const totalThemesCount = prop.themes.length;
     let completedThemesCount = 0;
 
     prop.themes.forEach(theme => {
@@ -27,6 +27,7 @@ function calculateProgress(prop: Phase) {
 }
 
 function PhaseOverview(prop: PhaseOverviewProp){
+    const progress = calculateProgress(prop.phase);
     return (
         <section className="phase-content panel">
 
@@ -36,28 +37,35 @@ function PhaseOverview(prop: PhaseOverviewProp){
                     <p className="phase-description">{prop.phase.longDesc}</p>
                 </div>
 
-                <span className="phase-percentage">{calculateProgress(prop.phase).percentage}% abgeschlossen</span>
+                <span className="phase-percentage">{progress.percentage}% abgeschlossen</span>
             </header>
 
             <div className="phase-progress">
                 <progress
                     className="skill-progress-bar"
-                    value={calculateProgress(prop.phase).percentage}
+                    value={progress.percentage}
                     max="100"
                 ></progress>
 
                 <span className="phase-progress-info">
-                    {calculateProgress(prop.phase).completedThemes} von {calculateProgress(prop.phase).totalThemes} Themen abgeschlossen
+                    {progress.completedThemes} von {progress.totalThemes} Themen abgeschlossen
                 </span>
             </div>
 
             <div className="phase-sections">
                 {prop.phase.themes.map(theme => 
-                    <ThemeButton title={theme.title} completed={theme.completed} />
+                    <ThemeButton title={theme.title} completed={theme.completed} key={theme.id}/>
                 )}
             </div>
-
-            <FinalProjectButton title="Abschlussprojektfreigeschaltet" subTitle="Zum Abschlussprojekt" unlocked={calculateProgress(prop.phase).percentage === 100 ? true : false}/>
+            <div className="final-project-list">
+                {prop.phase.finalProjects.map(project => 
+                    <FinalProjectButton title={project.title} unlocked={progress.percentage === 100 ? true : false} key={project.id}/>
+                )}
+            </div>
+                <button className="btn add-final-project-button" style={progress.percentage === 100 && 
+                    prop.phase.finalProjects.every(project => project.completed) ? {display: "flex"} : {display: "none"}} >
+                    + Weiteres Abschlussprojekt hinzufügen
+                </button>
         </section>
     )
 }
