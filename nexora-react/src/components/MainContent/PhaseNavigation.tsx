@@ -3,14 +3,24 @@ import Phase from "./ProjectPhase"
 import { useState } from "react";
 import { type Skill} from "../data/data";
 
-function PhaseNavigation({ skill }: { skill: Skill }){
-    const [activePhase, setActivePhase] = useState(1);
+type PhaseNavigationProps = {
+    skill: Skill,
+    activePhaseId: number,
+    onPhaseSelect: (id: number) => void
+}
+
+function PhaseNavigation(props: PhaseNavigationProps){
     return (
         <section className="panel phase-overview">
-            {skill.phases.map(phase => 
-                <Phase phaseTitle={phase.title} unlocked={true} 
-                phaseDescription={phase.shortDesc} key={phase.id} active={phase.id === activePhase}
-                onSelect={() => setActivePhase(phase.id) }/>
+            {props.skill.phases.map(phase => 
+                <Phase
+                    phaseTitle={phase.title}
+                    unlocked={true}
+                    phaseDescription={phase.shortDesc}
+                    key={phase.id}
+                    active={phase.id === props.activePhaseId}
+                    onSelect={() => props.onPhaseSelect(phase.id)}
+                />
             )}
           
         </section>

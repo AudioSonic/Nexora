@@ -7,7 +7,7 @@ export type Skill = {
     phases: Phase[];
 };
 
-type Phase = {
+export type Phase = {
     id: number,
     title: string,
     shortDesc: string,
@@ -16,7 +16,7 @@ type Phase = {
     finalProjects: FinalProject[];
 };
 
-type Theme = {
+export type Theme = {
     id: number,
     title: string,
     completed: boolean,
