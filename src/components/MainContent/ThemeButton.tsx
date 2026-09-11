@@ -4,12 +4,13 @@ import IconArrowRight from "../../assets/icons/icon_arrow_right.svg"
 
 type ThemeButtonProp = {
     title: string,
-    completed: boolean
+    completed: boolean,
+    onSelect: () => void
 }
 
 function ThemeButton(props: ThemeButtonProp){
     return (
-        <button className="btn theme-button">
+        <button className="btn theme-button" onClick={props.onSelect}>
             <div className="theme-icon-and-title">
                 <div
                     className={`theme-check-icon-container ${props.completed ? "completed" : ""}`}>

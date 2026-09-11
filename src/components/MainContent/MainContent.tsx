@@ -7,18 +7,29 @@ import type { Skill } from "../data/data"
 import type { Phase } from "../data/data"
 import type { Theme } from "../data/data"
 import SkillLogo from "../SkillLogo"
+import ThemeContent from "./ThemeContent"
 
 type MainContentProps = {
     skill: Skill,
     phase: Phase,
-    theme: Theme,
+    theme: Theme | undefined,
     activePhaseId: number,
-    onPhaseSelect: (id: number) => void
+    onPhaseSelect: (id: number) => void,
+    onThemeSelect: (id: number) => void,
+    onThemeBack: () => void
 };
 
 function MainContent(props: MainContentProps) {
     return (
         <div className="main-content">
+            {props.theme ? (
+                <ThemeContent
+                    theme={props.theme}
+                    phase={props.phase}
+                    onBack={props.onThemeBack}
+                />
+            ) : (
+                <>
                 <div className="skill-page-header">
                     <SkillLogo name={props.skill.name} src={props.skill.logo} alt={props.skill.logoAlt} className="skill-page-logo" />
                     <div className="skill-page-title-group">
@@ -29,7 +40,7 @@ function MainContent(props: MainContentProps) {
 
                 <PhaseContent activeSkill={props.skill}/>
                 <PhaseNavigation skill={props.skill} activePhaseId={props.activePhaseId} onPhaseSelect={props.onPhaseSelect}/>
-                <PhaseOverview phase={props.phase} theme={props.theme}/>
+                <PhaseOverview phase={props.phase} onThemeSelect={props.onThemeSelect}/>
 
                 <div id="skill-page-footer">
                     <img
@@ -40,6 +51,8 @@ function MainContent(props: MainContentProps) {
                         Dranbleiben zahlt sich aus. Jeder Schritt bringt dich weiter!
                     </span>
                 </div>
+                </>
+            )}
         </div>
     )
 }

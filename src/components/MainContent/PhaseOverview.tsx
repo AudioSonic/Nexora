@@ -2,11 +2,10 @@ import "./PhaseOverview.css"
 import ThemeButton from "./ThemeButton"
 import FinalProjectButton from "./FinalProjectButton"
 import type { Phase } from "../data/data"
-import type { Theme } from "../data/data"
 
 type PhaseOverviewProp = {
     phase: Phase;
-    theme: Theme;
+    onThemeSelect: (id: number) => void;
 }
 
 function calculateProgress(prop: Phase) {
@@ -54,7 +53,12 @@ function PhaseOverview(prop: PhaseOverviewProp){
 
             <div className="phase-sections">
                 {prop.phase.themes.map(theme => 
-                    <ThemeButton title={theme.title} completed={theme.completed} key={theme.id}/>
+                    <ThemeButton
+                        title={theme.title}
+                        completed={theme.completed}
+                        key={theme.id}
+                        onSelect={() => prop.onThemeSelect(theme.id)}
+                    />
                 )}
             </div>
             <div className="final-project-list">
