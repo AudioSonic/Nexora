@@ -2,25 +2,34 @@ import "./ThemeContent.css";
 import { useState } from "react";
 import type { Phase, Theme } from "../data/data";
 import { arrayMethodsLearningContent } from "../data/learningContent";
+import type { ThemeProgress } from "../data/themeProgress";
+import ContentBlockRenderer from "./ContentBlockRenderer";
 
 type ThemeContentProps = {
     phase: Phase;
     theme: Theme;
     onBack: () => void;
+    progress?: ThemeProgress;
+    onProgressChange: (progress: ThemeProgress) => void;
 };
 
-function ThemeContent({ phase, theme, onBack }: ThemeContentProps) {
+function ThemeContent({ phase, theme, onBack, progress, onProgressChange }: ThemeContentProps) {
     const content = theme.title === "Array-Methoden" ? arrayMethodsLearningContent : undefined;
     const sections = content?.sections ?? [];
     const [activeSectionId, setActiveSectionId] = useState(sections[0]?.id ?? "");
     const [activeTab, setActiveTab] = useState<"learning" | "exercises" | "summary" | "compact">("learning");
     const [activeExerciseId, setActiveExerciseId] = useState(content?.exercises[0]?.id ?? "");
+    const [completedSections, setCompletedSections] = useState<string[]>(progress?.completedSectionIds ?? sections.filter(section => section.completed).map(section => section.id));
+    const [completedExercises, setCompletedExercises] = useState<string[]>(progress?.completedExerciseIds ?? content?.exercises.filter(exercise => exercise.completed).map(exercise => exercise.id) ?? []);
     const activeSection = sections.find(section => section.id === activeSectionId) ?? sections[0];
     const activeSectionIndex = Math.max(0, sections.findIndex(section => section.id === activeSection?.id));
     const activeExercise = content?.exercises.find(exercise => exercise.id === activeExerciseId) ?? content?.exercises[0];
     const activeExerciseIndex = activeExercise && content
         ? content.exercises.findIndex(exercise => exercise.id === activeExercise.id)
         : 0;
+    const totalProgressItems = sections.length + (content?.exercises.length ?? 0);
+    const completedProgressItems = completedSections.length + completedExercises.length;
+    const allContentCompleted = totalProgressItems > 0 && completedProgressItems === totalProgressItems;
     const compactCode: Record<string, string> = {
         "Callback": "numbers.map(number => number * 2);",
         "map()": "const names = users.map(user => user.name);",
@@ -38,7 +47,7 @@ function ThemeContent({ phase, theme, onBack }: ThemeContentProps) {
 
             <header className="theme-content-header">
                 <div className="theme-heading">
-                    <div className={`theme-header-status ${theme.completed ? "completed" : ""}`}>✓</div>
+                    <div className={`theme-header-status ${allContentCompleted ? "completed" : ""}`}>{allContentCompleted ? "✓" : ""}</div>
                     <div>
                         <h2>{theme.title}</h2>
                         <p>{content?.subtitle ?? theme.desc}</p>
@@ -46,8 +55,8 @@ function ThemeContent({ phase, theme, onBack }: ThemeContentProps) {
                 </div>
                 <div className="theme-progress">
                     <span>Fortschritt im Thema</span>
-                    <div className="theme-progress-line"><span /></div>
-                    <strong>1 / {sections.length || 1}</strong>
+                    <div className="theme-progress-line"><span style={{ width: `${totalProgressItems ? completedProgressItems / totalProgressItems * 100 : 0}%` }} /></div>
+                    <strong>{completedProgressItems} / {totalProgressItems || 1}</strong>
                 </div>
             </header>
 
@@ -91,7 +100,11 @@ function ThemeContent({ phase, theme, onBack }: ThemeContentProps) {
                                 <textarea className="solution-input" placeholder="// Hier deinen Code eingeben ..." />
                                 <div className="exercise-actions">
                                     <button type="button" className="reset-solution">Lösung zurücksetzen</button>
-                                    <button type="button" className="theme-complete-button">Lösung prüfen <span>→</span></button>
+                                    <button type="button" className="theme-complete-button" onClick={() => {
+                                        const next = completedExercises.includes(activeExercise.id) ? completedExercises : [...completedExercises, activeExercise.id];
+                                        setCompletedExercises(next);
+                                        onProgressChange({ completedSectionIds: completedSections, completedExerciseIds: next });
+                                    }}>{completedExercises.includes(activeExercise.id) ? "Abgeschlossen" : "Lösung prüfen"} <span>→</span></button>
                                 </div>
                             </>
                         ) : <p className="theme-empty">Für dieses Thema sind noch keine Übungen hinterlegt.</p>}
@@ -103,7 +116,7 @@ function ThemeContent({ phase, theme, onBack }: ThemeContentProps) {
                         <h3>Themenübersicht</h3>
                         {sections.length > 0 ? sections.map((section, index) => (
                             <button className={`theme-section-item ${section.id === activeSection?.id ? "active" : ""}`} key={section.id} type="button" onClick={() => setActiveSectionId(section.id)}>
-                                <span>{index + 1}</span>{section.title}
+                                <span>{completedSections.includes(section.id) ? "✓" : index + 1}</span>{section.title}
                             </button>
                         )) : <p className="theme-empty">Für dieses Thema sind noch keine Inhalte hinterlegt.</p>}
                     </aside>
@@ -111,10 +124,10 @@ function ThemeContent({ phase, theme, onBack }: ThemeContentProps) {
                     {activeSection ? (
                         <>
                             <h2>{activeSectionIndex + 1}. {activeSection.title}</h2>
-                            {activeSection.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
-                            {activeSection.codeExamples?.map(example => (
-                                <pre className="theme-code" key={example.code}><code>{example.code}</code></pre>
-                            ))}
+                            {activeSection.blocks ? <ContentBlockRenderer blocks={activeSection.blocks} /> : <>
+                                {activeSection.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
+                                {activeSection.codeExamples?.map(example => <pre className="theme-code" key={example.code}><code>{example.code}</code></pre>)}
+                            </>}
                             <div className="theme-explanation">
                                 <h3>✓ Was passiert hier?</h3>
                                 <ul>
@@ -123,8 +136,17 @@ function ThemeContent({ phase, theme, onBack }: ThemeContentProps) {
                                     <li>Das ursprüngliche Array bleibt unverändert.</li>
                                 </ul>
                             </div>
-                            <button className="theme-complete-button" type="button">
-                                Als verstanden markieren <span>→</span>
+                            <button className="theme-complete-button" type="button" onClick={() => {
+                                if (completedSections.includes(activeSection.id)) {
+                                    const nextSection = sections[activeSectionIndex + 1];
+                                    if (nextSection) setActiveSectionId(nextSection.id);
+                                    return;
+                                }
+                                const next = completedSections.includes(activeSection.id) ? completedSections : [...completedSections, activeSection.id];
+                                setCompletedSections(next);
+                                onProgressChange({ completedSectionIds: next, completedExerciseIds: completedExercises });
+                            }}>
+                                {completedSections.includes(activeSection.id) ? "Abgeschlossen" : "Als verstanden markieren"} <span>→</span>
                             </button>
                         </>
                     ) : (

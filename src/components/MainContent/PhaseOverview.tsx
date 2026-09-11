@@ -2,18 +2,21 @@ import "./PhaseOverview.css"
 import ThemeButton from "./ThemeButton"
 import FinalProjectButton from "./FinalProjectButton"
 import type { Phase } from "../data/data"
+import { getThemeProgressKey, isThemeCompleted, type ThemeProgressMap } from "../data/themeProgress"
 
 type PhaseOverviewProp = {
     phase: Phase;
+    skillId: number;
+    progress: ThemeProgressMap;
     onThemeSelect: (id: number) => void;
 }
 
-function calculateProgress(prop: Phase) {
-    const totalThemesCount = prop.themes.length;
+function calculateProgress(prop: PhaseOverviewProp) {
+    const totalThemesCount = prop.phase.themes.length;
     let completedThemesCount = 0;
 
-    prop.themes.forEach(theme => {
-        if(theme.completed){
+    prop.phase.themes.forEach(theme => {
+        if(isThemeCompleted(theme, prop.progress[getThemeProgressKey(prop.skillId, prop.phase.id, theme.id)])){
             completedThemesCount++;
         }
     }); 
@@ -26,7 +29,7 @@ function calculateProgress(prop: Phase) {
 }
 
 function PhaseOverview(prop: PhaseOverviewProp){
-    const progress = calculateProgress(prop.phase);
+    const progress = calculateProgress(prop);
     return (
         <section className="phase-content panel">
 
@@ -55,7 +58,7 @@ function PhaseOverview(prop: PhaseOverviewProp){
                 {prop.phase.themes.map(theme => 
                     <ThemeButton
                         title={theme.title}
-                        completed={theme.completed}
+                        completed={isThemeCompleted(theme, prop.progress[getThemeProgressKey(prop.skillId, prop.phase.id, theme.id)])}
                         key={theme.id}
                         onSelect={() => prop.onThemeSelect(theme.id)}
                     />

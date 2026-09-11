@@ -4,77 +4,35 @@ import CompletedThemesIcon from "../../assets/icons/icon_completed_themes.svg"
 import CompletedPhasesIcon from "../../assets/icons/icon_completed_phases.svg"
 import CompletedPercentageIcon from "../../assets/icons/icon_completed_percentage.svg"
 import type { Skill } from "../data/data"
+import { getThemeProgressKey, isThemeCompleted, type ThemeProgressMap } from "../data/themeProgress"
 
-type PhaseContentProps = {
-    activeSkill: Skill;
-}
+type PhaseContentProps = { activeSkill: Skill; progress: ThemeProgressMap };
 
-function calculateProgress(prop: Skill) {
-    let completedFinalProjectCount = 0;
-    let completedThemeCount = 0;
-    let totalThemeCount = 0;
-    let completedPhaseCount = 0;
-    const totalPhaseCount = prop.phases.length;
+function calculateProgress(skill: Skill, progress: ThemeProgressMap) {
+    let completedFinalProjects = 0;
+    let completedThemes = 0;
+    let totalThemes = 0;
+    let completedPhases = 0;
 
-    prop.phases.forEach(phase => {
-        totalThemeCount += phase.themes.length;
-        completedThemeCount += phase.themes.filter(theme => theme.completed).length;
-
-        completedFinalProjectCount += phase.finalProjects.filter(project => project.completed).length;
-        
-        if(phase.themes.every(theme => theme.completed) && phase.finalProjects.every(project => project.completed)){
-            completedPhaseCount++;
-        }
+    skill.phases.forEach(phase => {
+        totalThemes += phase.themes.length;
+        completedThemes += phase.themes.filter(theme => isThemeCompleted(theme, progress[getThemeProgressKey(skill.id, phase.id, theme.id)])).length;
+        completedFinalProjects += phase.finalProjects.filter(project => project.completed).length;
+        if (phase.themes.every(theme => isThemeCompleted(theme, progress[getThemeProgressKey(skill.id, phase.id, theme.id)])) && phase.finalProjects.every(project => project.completed)) completedPhases++;
     });
 
-    return {
-        percentage: Math.round((completedThemeCount / totalThemeCount) * 100),
-        totalThemes: totalThemeCount,
-        completedThemes: completedThemeCount,
-        completedFinalProjects: completedFinalProjectCount,
-        completedPhases: completedPhaseCount,
-        totalPhases: totalPhaseCount
-    };
+    return { percentage: Math.round((completedThemes / totalThemes) * 100), totalThemes, completedThemes, completedFinalProjects, completedPhases, totalPhases: skill.phases.length };
 }
 
-function PhaseContent(props: PhaseContentProps){
-    const skillData = calculateProgress(props.activeSkill);
-    return (
-        <section className="general-overview panel">
-            <div className="general-overview-section">
-                <div className="overview-content">
-                    <img className="overview-icon" src={CompletedFinalProjectsIcon}/>
-                    <span className="overview-amount">{skillData.completedFinalProjects}</span>
-                    <span className="overview-description">Abschlussprojekte</span>
-                </div>
-            </div>
-
-            <div className="general-overview-section">
-                <div className="overview-content">
-                    <img className="overview-icon" src={CompletedThemesIcon}/>
-                    <span className="overview-amount">{skillData.completedThemes} / {skillData.totalThemes}</span>
-                    <span className="overview-description">Themen</span>
-                </div>
-            </div>
-
-            <div className="general-overview-section">
-                <div className="overview-content">
-                    <img className="overview-icon" src={CompletedPhasesIcon}/>
-                    <span className="overview-amount">{skillData.completedPhases} / {skillData.totalPhases}</span>
-                    <span className="overview-description">Phasen</span>
-                </div>
-            </div>
-
-            <div className="general-overview-section">
-                <div className="overview-content">
-                    <img className="overview-icon" src={CompletedPercentageIcon}/>
-                    <span className="overview-amount">{skillData.percentage}%</span>
-                    <span className="overview-description">Fortschritt</span>
-                </div>
-            </div>
-        </section>
-        
-    )
+function PhaseContent({ activeSkill, progress }: PhaseContentProps) {
+    const data = calculateProgress(activeSkill, progress);
+    const entries = [
+        [CompletedFinalProjectsIcon, data.completedFinalProjects, "Abschlussprojekte"],
+        [CompletedThemesIcon, `${data.completedThemes} / ${data.totalThemes}`, "Themen"],
+        [CompletedPhasesIcon, `${data.completedPhases} / ${data.totalPhases}`, "Phasen"],
+        [CompletedPercentageIcon, `${data.percentage}%`, "Fortschritt"]
+    ] as const;
+    return <section className="general-overview panel">{entries.map(([icon, amount, label]) => <div className="general-overview-section" key={label}><div className="overview-content"><img className="overview-icon" src={icon}/><span className="overview-amount">{amount}</span><span className="overview-description">{label}</span></div></div>)}</section>;
 }
 
 export default PhaseContent;

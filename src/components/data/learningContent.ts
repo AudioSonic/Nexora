@@ -11,9 +11,21 @@ export type LearningCodeExample = {
     explanation?: string;
 };
 
+export type LearningBlock =
+    | { type: "text"; text: string }
+    | { type: "code"; language: string; code: string; title?: string }
+    | { type: "info"; title?: string; text: string }
+    | { type: "comparison"; title?: string; left: { label: string; text: string }; right: { label: string; text: string } }
+    | { type: "list"; title?: string; items: string[] }
+    | { type: "tab"; title: string; tuning?: string; content: string }
+    | { type: "notation"; title: string; content: string }
+    | { type: "table"; headers: string[]; rows: string[][] };
+
 export type LearningSection = {
     id: string;
     title: string;
+    completed?: boolean;
+    blocks?: LearningBlock[];
     paragraphs: string[];
     codeExamples?: LearningCodeExample[];
     keyPoints?: string[];
@@ -22,6 +34,7 @@ export type LearningSection = {
 export type LearningExercise = {
     id: string;
     title: string;
+    completed?: boolean;
     instructions: string[];
     starterCode?: LearningCodeExample;
     expectedResult?: string;
@@ -55,8 +68,8 @@ export type LearningContent = {
 
 /** Beispielinhalt für JavaScript, Phase 1, Punkt 10. */
 export const arrayMethodsLearningContent: LearningContent = {
-    themeId: 10,
-    themeTitle: "map(), filter(), find() und some()",
+    themeId: 9,
+    themeTitle: "Array-Methoden",
     subtitle: "Arrays mit Callbacks gezielt verarbeiten",
     learningObjective:
         "Du lernst, Array-Methoden passend zu ihrer Aufgabe auszuwählen und Callbacks mit sinnvollen Rückgabewerten zu verwenden.",
@@ -64,6 +77,15 @@ export const arrayMethodsLearningContent: LearningContent = {
         {
             id: "foreach",
             title: "forEach() – mit jedem Element arbeiten",
+            blocks: [
+                { type: "text", text: "forEach() führt eine Callback-Funktion einmal für jedes Element eines Arrays aus." },
+                { type: "code", language: "javascript", code: `const games = ["Elden Ring", "Hades", "Minecraft"];
+
+games.forEach(game => {
+    console.log(game);
+});` },
+                { type: "info", title: "Was passiert hier?", text: "Die Callback-Funktion wird für jedes Element aufgerufen. Das ursprüngliche Array bleibt unverändert." }
+            ],
             paragraphs: [
                 "forEach() führt eine Callback-Funktion einmal für jedes Element eines Arrays aus.",
                 "Die Methode ist geeignet, wenn du eine Aktion ausführen möchtest. Sie erzeugt normalerweise kein neues Array."
