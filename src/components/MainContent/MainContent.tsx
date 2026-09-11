@@ -6,6 +6,8 @@ import PhaseOverview from "./PhaseOverview"
 import type { Skill } from "../data/data"
 import type { Phase } from "../data/data"
 import type { Theme } from "../data/data"
+import type { FinalProject } from "../data/data"
+import ProjectOverview from "./ProjectOverview"
 import SkillLogo from "../SkillLogo"
 import ThemeContent from "./ThemeContent"
 import type { ThemeProgressMap, ThemeProgress } from "../data/themeProgress"
@@ -19,13 +21,18 @@ type MainContentProps = {
     activePhaseId: number,
     onPhaseSelect: (id: number) => void,
     onThemeSelect: (id: number) => void,
-    onThemeBack: () => void
+    onThemeBack: () => void,
+    project?: FinalProject,
+    onProjectSelect: (id: number) => void,
+    onProjectBack: () => void
 };
 
 function MainContent(props: MainContentProps) {
     return (
         <div className="main-content">
-            {props.theme ? (
+            {props.project ? (
+                <ProjectOverview project={props.project} skill={props.skill} onBack={props.onProjectBack} />
+            ) : props.theme ? (
                 <ThemeContent
                     theme={props.theme}
                     phase={props.phase}
@@ -45,7 +52,7 @@ function MainContent(props: MainContentProps) {
 
                 <PhaseContent activeSkill={props.skill} progress={props.themeProgress}/>
                 <PhaseNavigation skill={props.skill} activePhaseId={props.activePhaseId} progress={props.themeProgress} onPhaseSelect={props.onPhaseSelect}/>
-                <PhaseOverview phase={props.phase} skillId={props.skill.id} progress={props.themeProgress} onThemeSelect={props.onThemeSelect}/>
+                <PhaseOverview phase={props.phase} skillId={props.skill.id} progress={props.themeProgress} onThemeSelect={props.onThemeSelect} onProjectSelect={props.onProjectSelect}/>
 
                 <div id="skill-page-footer">
                     <img

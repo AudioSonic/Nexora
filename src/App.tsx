@@ -10,11 +10,13 @@ function App() {
   const [activePhaseId, setPhaseId] = useState(1);
   const [activeThemeId, setThemeId] = useState<number | null>(null);
   const [themeProgress, setThemeProgress] = useState<ThemeProgressMap>({});
+  const [activeProjectId, setActiveProjectId] = useState<number | null>(null);
 
   function handleSkillSelect(skillId: number) {
     setSkillId(skillId);
     setPhaseId(1);
     setThemeId(null);
+    setActiveProjectId(null);
   }
 
   const selectedSkill = skills.find(
@@ -35,7 +37,8 @@ function App() {
 
   const selectedTheme = activeThemeId === null
     ? undefined
-    : selectedPhase.themes.find(theme => theme.id === activeThemeId);
+      : selectedPhase.themes.find(theme => theme.id === activeThemeId);
+  const selectedProject = activeProjectId === null ? undefined : selectedPhase.finalProjects.find(project => project.id === activeProjectId);
 
   return (
     <>
@@ -54,6 +57,9 @@ function App() {
         }}
         onThemeSelect={setThemeId}
         onThemeBack={() => setThemeId(null)}
+        project={selectedProject}
+        onProjectSelect={setActiveProjectId}
+        onProjectBack={() => setActiveProjectId(null)}
       />
     </div>
     </>

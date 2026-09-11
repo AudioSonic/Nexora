@@ -9,6 +9,7 @@ type PhaseOverviewProp = {
     skillId: number;
     progress: ThemeProgressMap;
     onThemeSelect: (id: number) => void;
+    onProjectSelect: (id: number) => void;
 }
 
 function calculateProgress(prop: PhaseOverviewProp) {
@@ -66,7 +67,7 @@ function PhaseOverview(prop: PhaseOverviewProp){
             </div>
             <div className="final-project-list">
                 {prop.phase.finalProjects.map(project => 
-                    <FinalProjectButton title={project.title} unlocked={progress.percentage === 100 ? true : false} key={project.id}/>
+                    <FinalProjectButton title={project.title} unlocked={progress.percentage === 100 ? true : false} key={project.id} onClick={() => prop.onProjectSelect(project.id)}/>
                 )}
             </div>
                 <button className="btn add-final-project-button" style={progress.percentage === 100 && 

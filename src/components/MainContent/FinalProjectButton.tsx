@@ -4,11 +4,12 @@ import LockIcon from "../../assets/icons/icon_lock.svg"
 type FinalProjectButtonProp = {
     title: string,
     unlocked: boolean
+    onClick: () => void
 }
 
 function FinalProjectButton(props: FinalProjectButtonProp){
     return(
-        <button disabled={!props.unlocked} className={props.unlocked ? "btn final-project-button-active" : "final-project-button-inactive"}>
+        <button onClick={props.onClick} disabled={!props.unlocked} className={props.unlocked ? "btn final-project-button-active" : "final-project-button-inactive"}>
             <div className="final-project-locked">
                 <img className="final-project-icon" src={LockIcon} style={props.unlocked ? {display: "none"} : {display: "flex"}}/>
                 <span className={props.unlocked ? "final-project-title-active" : "final-project-title-inactive"}>

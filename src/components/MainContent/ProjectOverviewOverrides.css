@@ -1,0 +1,18 @@
+.project-page .project-tabs {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  min-height: 48px;
+  gap: 28px;
+}
+
+.project-page .project-tabs button {
+  flex: 0 0 auto;
+  width: auto;
+  min-height: 0;
+  white-space: nowrap;
+}
+.requirements-card{margin-top:16px}.requirement-item{display:flex;align-items:center;gap:28px;padding:16px 18px;margin-top:8px;border:1px solid var(--border-color);border-radius:7px}.requirement-number{flex:none;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--color-secondary);color:#fff;font-size:20px;font-weight:700}.requirement-item h3{margin:0 0 3px;font-size:16px}.requirement-item p{margin:0;color:#40515d}.requirement-item label{margin-left:auto;white-space:nowrap;color:#40515d}.requirement-item input{width:19px;height:19px;vertical-align:middle;margin-right:8px;accent-color:var(--color-secondary)}
+.hint-group{margin-top:14px;padding:16px;border:1px solid var(--border-color);border-radius:7px}.hint-group>h3{margin:0 0 12px}.hint-item{display:flex;gap:14px;align-items:flex-start;padding:11px 0;border-top:1px solid #edf0f0}.hint-item span{flex:none;padding:4px 8px;border-radius:12px;background:#eaf8f1;color:var(--color-secondary);font-size:12px;font-weight:700}.hint-item p{margin:2px 0}.hint-reveal{margin-top:9px;padding:8px 12px;border:1px solid var(--color-secondary);border-radius:6px;color:var(--color-secondary);background:white}.hint-reveal:hover{background:#eaf8f1}.hint-seen{margin-left:12px;color:#6b7a83}

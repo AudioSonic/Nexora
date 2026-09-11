@@ -35,11 +35,20 @@ type Exercise = {
     content: string
 }
 
-type FinalProject = {
+export type FinalProject = {
     id: number,
     title: string,
     completed: boolean;
+    description?: string;
+    goal?: string;
+    exampleLabel?: string;
+    exampleDescription?: string;
+    requirements?: ProjectRequirement[];
+    hints?: ProjectHint[];
 }
+
+export type ProjectRequirement = { id: string; title: string; description: string; completed: boolean };
+export type ProjectHint = { id: string; requirementId: string; level: 1 | 2 | 3; content: string };
 
 
 
@@ -242,7 +251,25 @@ export const skills: Skill[] = [
                     {
                         "id": 1,
                         "title": "Kleiner Bewerbungsdaten-Tracker",
-                        "completed": true
+                        "completed": true,
+                        "requirements": [
+                            { "id": "anzeigen", "title": "Bewerbungen anzeigen", "description": "Erstelle eine Übersicht aller Bewerbungen und zeige sie in einer Liste an. Nutze dafür die map()-Funktion.", "completed": false },
+                            { "id": "hinzufuegen", "title": "Bewerbung hinzufügen", "description": "Erstelle ein Formular, mit dem neue Bewerbungen hinzugefügt werden können. Nutze Objekte, um die Daten zu speichern.", "completed": false },
+                            { "id": "filtern", "title": "Bewerbungen filtern", "description": "Implementiere eine Funktion, mit der die Liste nach dem Status gefiltert werden kann. Nutze dafür die filter()-Funktion.", "completed": false },
+                            { "id": "suchen", "title": "Bewerbungen suchen", "description": "Ermögliche die Suche nach Bewerbungen über den Firmennamen. Nutze eine eigene Funktion und die includes()-Methode.", "completed": false },
+                            { "id": "phase", "title": "Nächste Phase freischalten", "description": "Stelle sicher, dass die nächste Phase erst aktiv wird, wenn alle Themen der vorherigen Phase abgeschlossen wurden.", "completed": false },
+                            { "id": "speichern", "title": "Daten speichern", "description": "Speichere die Bewerbungen in der Browser-LocalStorage, damit sie nach dem Neuladen erhalten bleiben.", "completed": false }
+                        ],
+                        "hints": [
+                            { "id": "phase-1", "requirementId": "phase", "level": 1, "content": "Überlege zunächst, welche Frage du hier beantworten musst." },
+                            { "id": "phase-2", "requirementId": "phase", "level": 2, "content": "Du musst prüfen, ob eine Bedingung für jedes Element eines Arrays erfüllt ist." },
+                            { "id": "phase-3", "requirementId": "phase", "level": 3, "content": "Schau dir die Array-Methode every() noch einmal an." },
+                            { "id": "anzeigen-1", "requirementId": "anzeigen", "level": 1, "content": "Überlege, welche Daten du für jede Bewerbung darstellen möchtest." },
+                            { "id": "anzeigen-2", "requirementId": "anzeigen", "level": 2, "content": "Eine Liste lässt sich aus einem Array von Bewerbungsobjekten erzeugen." },
+                            { "id": "filtern-1", "requirementId": "filtern", "level": 1, "content": "Überlege, wie du aus einer Liste nur passende Einträge auswählst." },
+                            { "id": "filtern-2", "requirementId": "filtern", "level": 2, "content": "Suche nach einer Array-Methode, die ein neues, kürzeres Array zurückgibt." },
+                            { "id": "speichern-1", "requirementId": "speichern", "level": 1, "content": "Überlege, welcher Browser-Speicher Daten über einen Seitenaufruf hinaus bewahrt." }
+                        ]
                     },
                     {
                         "id": 2,
