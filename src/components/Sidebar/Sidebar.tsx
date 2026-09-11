@@ -5,6 +5,7 @@ import SkillList from "./SkillList";
 import TotalProgress from "./TotalProgress";
 type SidebarProps = {
     onSkillSelect: (skillId: number) => void;
+    onAddSkill: () => void;
 }
 
 function Sidebar(props: SidebarProps){
@@ -12,7 +13,7 @@ function Sidebar(props: SidebarProps){
         <aside id="sidebar">
             <div>
                 <img src={NexoraLogo} alt="Nexora" id="nexora-logo"/>
-                <SkillList onSkillSelect={props.onSkillSelect}/>
+                <SkillList onSkillSelect={props.onSkillSelect} onAddSkill={props.onAddSkill}/>
             </div>
             <TotalProgress />
 

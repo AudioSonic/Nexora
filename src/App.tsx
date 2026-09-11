@@ -4,6 +4,7 @@ import MainContent from "./components/MainContent/MainContent"
 import { useState } from "react";
 import { skills } from "./components/data/data";
 import type { ThemeProgressMap } from "./components/data/themeProgress";
+import AddNewSkill from "./components/Modals/AddNewSkill";
 
 function App() {
   const [activeSkillId, setSkillId] = useState(1);
@@ -11,6 +12,7 @@ function App() {
   const [activeThemeId, setThemeId] = useState<number | null>(null);
   const [themeProgress, setThemeProgress] = useState<ThemeProgressMap>({});
   const [activeProjectId, setActiveProjectId] = useState<number | null>(null);
+  const [isAddSkillModalOpen, setIsAddSkillModalOpen] = useState(false);
 
   function handleSkillSelect(skillId: number) {
     setSkillId(skillId);
@@ -43,7 +45,10 @@ function App() {
   return (
     <>
     <div id="app">
-      <Sidebar onSkillSelect={handleSkillSelect}/>
+      <Sidebar
+        onSkillSelect={handleSkillSelect}
+        onAddSkill={() => setIsAddSkillModalOpen(true)}
+      />
       <MainContent
         skill={selectedSkill}
         phase={selectedPhase}
@@ -62,6 +67,9 @@ function App() {
         onProjectBack={() => setActiveProjectId(null)}
       />
     </div>
+    {isAddSkillModalOpen && (
+      <AddNewSkill onClose={() => setIsAddSkillModalOpen(false)} />
+    )}
     </>
   );
 }

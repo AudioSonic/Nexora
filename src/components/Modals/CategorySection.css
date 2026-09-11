@@ -1,0 +1,7 @@
+.category-section { background-color: #fbfcfd; border: 1px solid #dce3e8; border-radius: 7px; padding: 14px 12px; min-width: 230px; min-height: 0; display: flex; flex-direction: column; justify-content: space-between; }
+.category-section h3 { font-size: 18px; margin-bottom: 5px; }
+.category-section .upper-section > p { color: #536277; }
+.category-information-text { display: flex; align-items: flex-start; gap: 10px; color: var(--color-secondary); background-color: var(--color-secondary-light); padding: 14px; border-radius: 7px; font-size: 11px; line-height: 1.5; }
+.category-section hr { height: 1px; background-color: #ccd7dd; border: 0; }
+.informations { flex: 1; min-height: 0; overflow-y: auto; margin-top: 12px; }
+.upper-section { display: flex; flex-direction: column; min-height: 0; flex: 1; }

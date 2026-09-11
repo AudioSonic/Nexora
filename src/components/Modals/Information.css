@@ -1,0 +1,6 @@
+.information { display: flex; align-items: center; gap: 12px; min-width: 100px; min-height: 57px; height: 57px; background-color: var(--color-cards); padding: 5px; border-style: solid; border-width: 0 0 1px; border-color: #e2e8ec; }
+.check-outer-layer { background-color: var(--color-light-grey); width: 34px; height: 34px; flex: 0 0 34px; display: flex; align-items: center; justify-content: center; border-radius: 99px; padding: 7px; }
+.check-outer-layer.completed { background-color: var(--color-secondary-light); }
+.check-icon { background-color: var(--color-secondary); border-radius: 99px; padding: 2px; }
+.text-information { line-height: 18px; }
+.text-information p { color: #536277; }

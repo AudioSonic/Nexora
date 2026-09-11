@@ -4,6 +4,7 @@ import { skills, type Skill } from "../data/data";
 
 type SkillListProps = {
     onSkillSelect: (skillId: number) => void 
+    onAddSkill: () => void
 }
 
 function calculateProgress(prop: Skill): number {
@@ -32,7 +33,9 @@ function SkillList(props: SkillListProps){
                         )}
                     </div>
 
-                    <button className="btn" id="btn-add-skill">+ Neuen Skill hinzufügen</button>
+                    <button className="btn" id="btn-add-skill" onClick={props.onAddSkill}>
+                        + Neuen Skill hinzufügen
+                    </button>
                 </nav>
             </div>
     )
