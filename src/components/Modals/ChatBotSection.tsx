@@ -1,21 +1,61 @@
+import { useState } from "react"
 import "./ChatBotSection.css"
 import ChatMessage from "./ChatMessage"
+import { chatData } from "../data/chatData";
+import type {ChatData} from "../data/chatData";
 
 function ChatBotSection(){
+    const [messages, setMessages] = useState(chatData);
+    const [message, setMessage] = useState("");
+
+function getNewChatId(messageArray: ChatData[]) {
+    const latestMessage = messageArray[messageArray.length - 1];
+
+    return latestMessage.id + 1;
+}
+
+    function handleSubmit(event: React.SubmitEvent<HTMLFormElement>) {
+        event.preventDefault();
+
+        if (message.trim() === "") {
+            return;
+        }
+
+        const newMessage = {
+            id: getNewChatId(messages),
+            senderId: 2,
+            message: message.trim()
+        };
+
+        setMessages([
+            ...messages,
+            newMessage
+        ]);
+
+        setMessage("");
+    }
+
+    function handleKeyDown(event: React.KeyboardEvent<HTMLTextAreaElement>) {
+    if (event.key === "Enter" && !event.shiftKey) {
+        event.preventDefault();
+        event.currentTarget.form?.requestSubmit();
+        }
+    }
+
     return(
         <section className="chat">
             
             <div className="chat-messages">
-                <ChatMessage message="Ich möchte Spanisch lernen." sender="Du"/>
-                <ChatMessage message="Das klingt spannend! Wie ist dein aktuelles Sprachniveau in Spanisch? (z.B. Anfänger, A1, A2, B1, B2,...)" sender="Nexora"/>
-                <ChatMessage message="B2" sender="Du"/>
-                <ChatMessage message="Alles klar. Für welchen Zweck möchtest du Spanisch lernen? (z.B. Reisen, Studium, Beruf, Umzug, persönliche Interessen...)" sender="Nexora"/>
-                <ChatMessage message="Für einen beruflichen Umzug nach Spanien." sender="Du"/>
-                <ChatMessage message="Super, das ist ein konkretes Ziel! Wie viel Zeit kannst du pro Woche ungefähr zum Lernen einplanen? (z.B. 2-4 Stunden, 5+ Stunden...)" sender="Nexora"/>
+                {messages.map(chat => 
+                    <ChatMessage message={chat.message} sender={chat.senderId === 1 ? "Nexora" : "Du"} key={chat.id}/>
+                )}
+                
+                
             </div>
 
-            <form className="chat-input" onSubmit={(event) => event.preventDefault()}>
-                <textarea placeholder="Deine Antwort ..."></textarea>
+            <form className="chat-input" onSubmit={handleSubmit}>
+                <textarea placeholder="Deine Antwort ..." value={message} 
+                onChange={(event) => setMessage(event.target.value)} onKeyDown={handleKeyDown}/>
                 <button type="submit" aria-label="Antwort senden">➤</button>
             </form>
 

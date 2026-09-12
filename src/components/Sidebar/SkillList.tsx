@@ -1,5 +1,5 @@
 import "./SkillList.css"
-import SkillItem from './SkillItem'
+import SkillCard from './SkillCard'
 import { skills, type Skill } from "../data/data";
 
 type SkillListProps = {
@@ -27,7 +27,7 @@ function SkillList(props: SkillListProps){
 
                     <div id="skill-list">
                         {skills.map(skill => 
-                            <SkillItem name={skill.name} progress={calculateProgress(skill)} 
+                            <SkillCard name={skill.name} progress={calculateProgress(skill)} 
                             logoSrc={skill.logo} logoAlt={skill.logoAlt} skillId={skill.id}
                             onSkillSelect={props.onSkillSelect} key={skill.id}/>
                         )}

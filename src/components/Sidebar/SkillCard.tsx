@@ -1,4 +1,4 @@
-import "./SkillItem.css"
+import "./SkillCard.css"
 import SkillLogo from "../SkillLogo"
 
 type SkillItemProps = {
@@ -10,7 +10,7 @@ type SkillItemProps = {
     onSkillSelect: (skillId: number) => void
 };
 
-function SkillItem(props: SkillItemProps){
+function SkillCard(props: SkillItemProps){
     return(
         <button className="btn skill-button" onClick={() => props.onSkillSelect(props.skillId)}>
             <div className="skill-button-upper">
@@ -25,4 +25,4 @@ function SkillItem(props: SkillItemProps){
     )
 }
 
-export default SkillItem
+export default SkillCard
